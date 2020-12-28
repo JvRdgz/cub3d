@@ -1,4 +1,5 @@
 #include <mlx.h>
+#include <stdio.h>
 
 // Funcion que crea colores con transparencia (TRGB)
 /*
@@ -52,6 +53,12 @@ typedef	struct	s_data
 	int	endian;
 }		t_data;
 
+typedef	struct	s_vars
+{
+	void	*mlx;
+	void	*win;
+}		t_vars;
+
 /**
  * Creamos mi propia version de la funcion mlx_pixel_put() que ya
  * en la propia libreria de mlx. El problema de usar la funcion
@@ -59,6 +66,7 @@ typedef	struct	s_data
  * los pixeles de forma instantanea en la ventana, sin esperar a
  * que se termine de renderizar.
  * */
+
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -68,47 +76,88 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	main(void)
+void	draw_square(t_data *data)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
 	int		i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 600, 600, "Hello world!");
-	img.img = mlx_new_image(mlx, 600, 600);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, 50, i++, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, i++, 50, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, 101, i++, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, i++, 101, 0x00FF0000);
+}
 
-	// Calcular siempre el desplazamiento de memoria (offset), usando la
-	// longitud de la linea establecida por mlx_get_data_addr.
-	// Esto es, la diferencia de memoria entre el line_length y el width de
-	// la ventana. Esto se calcula con dicha formula:
-	// int     offset = (y * line_length + x * (bits_per_pixel / 8));
+void	draw_circle(t_data *data)
+{
+	int		i;
+	int		j;
 
-	/*
-	** After creating an image, we can call `mlx_get_data_addr`, we pass
-	** `bits_per_pixel`, `line_length`, and `endian` by reference. These will
-	** then be set accordingly for the *current* data address.
-	*/
+	i = 150;
+	j = 150;
+	while (i < 201 && j > -1)
+		ft_mlx_pixel_put(data, i++, j--, 0x00FFFFFF);
+	i = 150;
+	j = 0;
+	while (i < 201 && j < 151)
+		ft_mlx_pixel_put(data, i++, j++, 0x00FFFFFF);
+}
 
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	i = 20;
-	while (i < 101)
-		ft_mlx_pixel_put(&img, 20, i++, 0x00FF0000);
-	i = 20;
-	while (i < 101)
-		ft_mlx_pixel_put(&img, i++, 20, 0x00FF0000);
-	i = 20;
-	while (i < 101)
-		ft_mlx_pixel_put(&img, 101, i++, 0x00FF0000);
-	i = 20;
-	while (i < 101)
-		ft_mlx_pixel_put(&img, i++, 101, 0x00FF0000);
-	// ft_mlx_pixel_put(&img, 15, 16, 0x00FF0000);
-	// ft_mlx_pixel_put(&img, 15, 17, 0x00FF0000);
-	// ft_mlx_pixel_put(&img, 15, 18, 0x00FF0000);
-	// ft_mlx_pixel_put(&img, 15, 19, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+// int	main(void)
+// {
+// 	void	*mlx;
+// 	void	*mlx_win;
+// 	t_data	img;
+
+// 	mlx = mlx_init();
+// 	mlx_win = mlx_new_window(mlx, 600, 600, "Hello world!");
+// 	img.img = mlx_new_image(mlx, 600, 600);
+
+// 	// Calcular siempre el desplazamiento de memoria (offset), usando la
+// 	// longitud de la linea establecida por mlx_get_data_addr.
+// 	// Esto es, la diferencia de memoria entre el line_length y el width de
+// 	// la ventana. Esto se calcula con dicha formula:
+// 	// int     offset = (y * line_length + x * (bits_per_pixel / 8));
+
+// 	/*
+// 	** After creating an image, we can call `mlx_get_data_addr`, we pass
+// 	** `bits_per_pixel`, `line_length`, and `endian` by reference. These will
+// 	** then be set accordingly for the *current* data address.
+// 	*/
+
+// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+// 	draw_square(&img);
+// 	draw_circle(&img);
+// 	// ft_mlx_pixel_put(&img, 15, 16, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 17, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 18, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 19, 0x00FF0000);
+// 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+// 	mlx_loop(mlx);
+// 	return (0);
+// }
+
+/**
+ * Imprime ese mensaje cada vez que se pulsa una tecla
+ **/
+int		key_hook(int keycode, t_vars *vars)
+{
+	printf("\nHello from key_hook!\n");
+}
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_loop(vars.mlx);
 	return (0);
-} 
+}
