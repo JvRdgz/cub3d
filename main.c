@@ -144,20 +144,64 @@ void	draw_circle(t_data *data)
 // }
 
 /**
- * Imprime ese mensaje cada vez que se pulsa una tecla
+ * Imprime ese mensaje cada vez que se pulsa una tecla.
+ * Aquí iria el hook, es decir, el control de eventos con
+ * las teclas del teclado que despues enviamos a la funcion
+ * mlx_key_hook(), pasandole la funcion por argumento.
  **/
 int		key_hook(int keycode, t_vars *vars)
 {
-	printf("\nHello from key_hook!\n");
+	printf("Hello from key_hook! %d\n", keycode);
 }
 
-int	main(void)
+int		mouse_hook(int btn_num, t_vars *s_vars)
+{
+	printf("Boton %d del raton presionado.\n", btn_num);
+}
+/*
+void	print_mouse_position(t_vars *s_vars)
+{
+	int		i;
+	int		x;
+	int		y;
+
+	i = 0;
+	y = 0;
+	x = 0;
+	// mlx_mouse_move(s_vars->mlx, s_vars->win, x, y);
+	printf("(%d, %d)\n", x, y);
+
+	mlx_loop_hook(s_vars->mlx, mlx_mouse_move(s_vars->mlx, s_vars->win, x, y), s_vars);
+}
+*/
+// int	main(void)
+// {
+// 	t_vars	vars;
+
+// 	vars.mlx = mlx_init();
+// 	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+// 	mlx_key_hook(vars.win, key_hook, &vars); // Reconoce cuando se presiona una tecla del teclado.
+// 	// mlx_mouse_hook(vars.win, mouse_hook, &vars); // Reconoce cuando se presiona un boton del raton
+// 	mlx_mouse_move(vars.mlx, vars.win, 150, 150); // El puntero del raton aparece en las coordenadas que se le indiquen en el argumento.
+// 	// printf("mlx_mouse_move(): %d", mlx_mouse_move(vars.mlx, vars.win, 150, 150));
+// 	// mlx_mouse_show(vars.mlx, vars.win); // Muestra el puntero del raton por la ventana cuando éste pasa por encima.
+// 	// mlx_mouse_hide(vars.mlx, vars.win); // Desaparece el puntero del raton cuando éste se mueve por la ventana.
+// 	// print_mouse_position(&vars);
+// 	mlx_loop(vars.mlx);
+// 	return (0);
+// }
+
+int		close(int keycode, t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+}
+
+int		main(void)
 {
 	t_vars	vars;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	mlx_key_hook(vars.win, key_hook, &vars);
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello World!");
+	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
 	mlx_loop(vars.mlx);
-	return (0);
 }
