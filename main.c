@@ -108,7 +108,7 @@ void	draw_circle(t_data *data)
 	while (i < 201 && j < 151)
 		ft_mlx_pixel_put(data, i++, j++, 0x00FFFFFF);
 }
-
+/////////	PINTAR EN VENTANA	///////////
 // int	main(void)
 // {
 // 	void	*mlx;
@@ -174,6 +174,7 @@ void	print_mouse_position(t_vars *s_vars)
 	mlx_loop_hook(s_vars->mlx, mlx_mouse_move(s_vars->mlx, s_vars->win, x, y), s_vars);
 }
 */
+////////	HOOKS	/////////////
 // int	main(void)
 // {
 // 	t_vars	vars;
@@ -193,9 +194,12 @@ void	print_mouse_position(t_vars *s_vars)
 
 int		close(int keycode, t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	// Si se pulsa la letra ESC
+	if (keycode == 65307)
+		mlx_destroy_window(vars->mlx, vars->win);
+	printf("\nKey pressed: %d\n", keycode);
 }
-
+////////////	EVENTOS		///////////////
 int		main(void)
 {
 	t_vars	vars;
