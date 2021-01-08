@@ -195,17 +195,62 @@ void	print_mouse_position(t_vars *s_vars)
 int		close(int keycode, t_vars *vars)
 {
 	// Si se pulsa la letra ESC
-	if (keycode == 65307)
-		mlx_destroy_window(vars->mlx, vars->win);
+	// if (keycode == 65307)
+	mlx_destroy_window(vars->mlx, vars->win);
 	printf("\nKey pressed: %d\n", keycode);
 }
+
 ////////////	EVENTOS		///////////////
+// int		main(void)
+// {
+// 	t_vars	vars;
+
+// 	vars.mlx = mlx_init();
+// 	vars.win = mlx_new_window(vars.mlx, 800, 800, "Hello World!");
+// 	// printf("\n FUNCION: %d", mlx_mouse_show(vars.mlx, vars.win));
+// 	// mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+// 	// mlx_mouse_hook(vars.win, close, &vars);
+// 	mlx_loop(vars.mlx);
+// }
+
+
+////////////	LOOPS		///////////////
+
+int		draw_square_hook_loop(t_data *data)
+{
+	int		i;
+
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, 50, i++, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, i++, 50, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, 101, i++, 0x00FF0000);
+	i = 50;
+	while (i < 101)
+		ft_mlx_pixel_put(data, i++, 101, 0x00FF0000);
+	return (0);
+}
+
 int		main(void)
 {
 	t_vars	vars;
+	t_data	img;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello World!");
-	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	vars.win = mlx_new_window(vars.mlx, 600, 600, "Hello world!");
+	img.img = mlx_new_image(vars.mlx, 600, 600);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// draw_square(&img);
+// 	draw_circle(&img);
+// 	// ft_mlx_pixel_put(&img, 15, 16, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 17, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 18, 0x00FF0000);
+// 	// ft_mlx_pixel_put(&img, 15, 19, 0x00FF0000);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_loop_hook(vars.mlx, draw_square_hook_loop, &vars);
 	mlx_loop(vars.mlx);
 }
