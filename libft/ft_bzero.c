@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/11/05 19:49:00 by jarodrig          #+#    #+#             */
+/*   Updated: 2019/11/15 21:03:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stddef.h>
 
-int		main(int argc, char *argv[])
+void	ft_bzero(void *s, size_t n)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	while (n--)
+	{
+		*((char*)s) = 0;
+		s++;
+	}
 }

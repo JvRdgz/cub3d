@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/11/14 20:52:02 by jarodrig          #+#    #+#             */
+/*   Updated: 2020/01/06 22:51:50 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-int		main(int argc, char *argv[])
+void	*ft_calloc(size_t count, size_t size)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	void	*result;
+
+	if (!(result = malloc(size * count)))
+		return (NULL);
+	ft_bzero(result, count * size);
+	return (result);
 }

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/12/17 18:32:58 by jarodrig          #+#    #+#             */
+/*   Updated: 2020/01/06 22:45:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int		main(int argc, char *argv[])
+void	ft_putstr_fd(char *s, int fd)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	if (s)
+		while (*s != '\0')
+		{
+			write(fd, s, 1);
+			s++;
+		}
 }

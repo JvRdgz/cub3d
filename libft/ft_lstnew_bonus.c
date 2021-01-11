@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/01/05 17:14:32 by jarodrig          #+#    #+#             */
+/*   Updated: 2020/01/05 18:02:11 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int		main(int argc, char *argv[])
+t_list	*ft_lstnew(void *content)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	t_list	*list;
+
+	if (!(list = malloc(sizeof(t_list))))
+		return (NULL);
+	list->content = (void *)content;
+	list->next = NULL;
+	return (list);
 }

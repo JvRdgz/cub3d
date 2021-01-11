@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/01/05 17:10:26 by jarodrig          #+#    #+#             */
+/*   Updated: 2020/01/05 17:43:58 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int		main(int argc, char *argv[])
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	t_list *aux;
+
+	if (lst)
+	{
+		while (*lst)
+		{
+			aux = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			(*lst) = aux;
+		}
+	}
 }

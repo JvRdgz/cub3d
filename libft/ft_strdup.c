@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/11/15 18:25:10 by jarodrig          #+#    #+#             */
+/*   Updated: 2019/11/18 20:38:46 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int		main(int argc, char *argv[])
+char	*ft_strdup(const char *s1)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	char	*ptr;
+	char	*s;
+	size_t	len;
+
+	len = ft_strlen(s1) + 1;
+	s = (char *)s1;
+	ptr = malloc(len);
+	if (ptr)
+		ft_memcpy(ptr, s, len);
+	return (ptr);
 }

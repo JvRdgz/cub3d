@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/11/04 13:28:51 by jarodrig          #+#    #+#             */
+/*   Updated: 2019/11/18 18:51:03 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stddef.h>
 
-int		main(int argc, char *argv[])
+void	*ft_memset(void *b, int c, size_t len)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	size_t				i;
+	unsigned	char	*dst;
+
+	dst = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+	{
+		dst[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
 }

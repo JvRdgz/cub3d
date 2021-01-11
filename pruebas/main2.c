@@ -36,13 +36,9 @@ int     main(void)
         while (++count_w < 800)
         {
             if (count_w % 2)
-            {
-                mlx.t_img.addr[count_h * 800 + count_w] = 0xFFFFFF;
-            }
+                mlx.t_img.addr[count_h * 800 + count_w] = 0xFF0000;
             else
-            {
                 mlx.t_img.addr[count_h * 800 + count_w] = 0;
-            }
         }
     }
     mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.t_img.img_ptr, 0, 0);

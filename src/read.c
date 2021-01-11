@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/01/11 20:30:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		main(int argc, char *argv[])
+/*
+** Lee el mapa .cub utilizando el get_next_line(), y se guarda en
+** la variable **world_map de la estructura.
+*/
+void	read_map(t_player *player, t_raycaster *raycaster)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
 }

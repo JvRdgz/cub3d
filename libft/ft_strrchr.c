@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 13:01:00 by jarodrig         ###   ########.fr       */
+/*   Created: 2019/11/08 16:58:05 by jarodrig          #+#    #+#             */
+/*   Updated: 2019/11/18 19:52:41 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int		main(int argc, char *argv[])
+char	*ft_strrchr(const char *s, int c)
 {
-	// Tiene que leer como el mapa por argumento. argc == 1.
+	char	*sr;
+	size_t	len;
+
+	sr = (char *)s;
+	len = ft_strlen(sr);
+	len += 1;
+	while (len--)
+	{
+		if (sr[len] == (char)c)
+			return (&sr[len]);
+	}
+	return (NULL);
 }
