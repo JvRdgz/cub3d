@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/11 20:32:35 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/12 20:57:53 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
-# include "../get_next_line/get_next_line_bonus.h"
-# include "../libft/libft.h"
+# include "get_next_line_bonus.h"
+# include "libft.h"
 
 typedef	struct		s_data
 {
@@ -115,9 +115,15 @@ typedef	struct		s_raycaster
 */
 	int				side;
 /*
-** Variable del mapa para algoritmo DDA.
+** Variable del mapa para algoritmo DDA. Es de tipo int debido a que
+** de esta forma nos permitira saber cuando estamos chocando contra una pared
+** (1) o no (0).
 */
 	int				**world_map;
+/*
+** Variable para guardar el mapa leido.
+*/
+	char			**r_map;
 /*
 ** h es la altura en pixeles de la pantalla, para llevarlas a las
 ** coordenadas del pixel. Podemos multiplicar h por lo que sea para
@@ -145,5 +151,5 @@ typedef	struct		s_raycaster
 void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data);
 void	static	dda_algorithm(t_player *player, t_raycaster *raycaster);
 void	static	set_wall_dimensions(t_raycaster *raycaster);
-void	read_map(t_player *player, t_raycaster *raycaster);
+void	read_map(t_player *player, t_raycaster *raycaster, char **argv);
 #endif
