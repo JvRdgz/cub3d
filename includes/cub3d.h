@@ -151,5 +151,5 @@ typedef	struct		s_raycaster
 void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data);
 void	static	dda_algorithm(t_player *player, t_raycaster *raycaster);
 void	static	set_wall_dimensions(t_raycaster *raycaster);
-void	read_map(t_player *player, t_raycaster *raycaster, char **argv);
+void	read_map(t_raycaster *raycaster, char **argv);
 #endif

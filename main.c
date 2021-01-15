@@ -15,4 +15,14 @@
 int		main(int argc, char *argv[])
 {
 	// Tiene que leer como el mapa por argumento. argc == 1.
+	t_raycaster	raycaster;
+	if (argc < 1)
+		printf("\nNumero de argumentos invalido\n");
+	else
+	{
+		printf("\nLeyendo mapa:\n");
+		read_map(&raycaster, &argv[1]);
+		printf("\nMapa leido.\n");
+	}
+	return (0);
 }

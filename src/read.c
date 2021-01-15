@@ -16,7 +16,7 @@
 ** Lee el mapa .cub utilizando el get_next_line(), y se guarda en
 ** la variable **world_map de la estructura.
 */
-void	read_map(t_player *player, t_raycaster *raycaster, char **argv)
+void	read_map(t_raycaster *raycaster, char **argv)
 {
 	int		fd;
 	int		x;
