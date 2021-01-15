@@ -6,9 +6,11 @@ SRC			=		src/get_next_line_bonus.c\
 					src/read.c\
 					utils/get_next_line_utils_bonus.c\
 
-LIBOBJS			=		libft/*.o
+LIBOBJS			=		./utils/libft/*.o
 
-####### DETECCION DE SO PROPORCIONADO POR @agutierr!! ###########
+OBJS			=		$(SRC:.c=.o)
+
+####### DETECCION DE S.O. PROPORCIONADO POR @agutierr!! ###########
 
 # Sistema Windows
 ifeq ($(OS),Windows_NT)
@@ -25,7 +27,7 @@ ifeq ($(detected_OS),Linux)
     MLXFLAGS = -lm -lbsd -lmlx -lXext -lX11
 endif
 
-############### COMPILADORES SEGUN SO. #####################
+############### COMPILADORES SEGUN S.O. #####################
 
 FLAGS			= -Wall -Wall -Werror
 ifeq ($(detected_OS),Linux)
@@ -42,15 +44,16 @@ PURPLE			= \033[0;35m
 GREEN			= \033[1;32m
 RESET			= \033[0m
 
-lib:
-			@$(MAKE) -C libft all
+libft:
+			@$(MAKE) -C ./utils/libft all
 
 all:
 			@echo "${RED}[--- REMOVING a.out ---]${RESET}"
 			@rm -rf cub3D
 
 			@echo "${PURPLE}[--- COMPILING mlx ---]${RESET}"
-			lib $(GCC) $(SRC) $(FLAGS) $(MLXFLAGS) -o $(NAME)
+			$(libft) $(GCC) $(FLAGS) $(MLXFLAGS) -c $(SRC)
+			@ar rc $(NAME) $(OBJS)
 
 			@echo "${GREEN}[#################]"
 
