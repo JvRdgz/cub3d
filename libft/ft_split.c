@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 22:05:26 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/01/07 14:01:38 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/16 20:30:39 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ft_free_matrix(char **matrix)
 	int		i;
 
 	i = 0;
-	while (matrix[i] != '\0')
+	while (matrix[i] != (int)0)
 	{
 		free(matrix[i]);
 		i++;
