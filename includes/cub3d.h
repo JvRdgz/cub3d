@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/12 20:57:53 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:55:29 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include "get_next_line_bonus.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef	struct		s_data
 {

@@ -1,2 +1,3 @@
 https://www.notion.so/WOLFENSTEIN3D-cub3D-702153f43be5431ab8decc85b13dc199
 https://harm-smits.github.io/42docs/libs/minilibx.html
+https://qst0.github.io/ft_libgfx/man_mlx.html

@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/01/16 21:00:10 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/01/17 15:39:19 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC		=	./src/get_next_line_bonus.c\
 			./src/raycast.c\
 			./utils/get_next_line_utils_bonus.c\
 
-LIBOBJS	=	./utils/libft/*.o
+LIBOBJS	=	libft/*.o
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -56,8 +56,8 @@ PURPLE	=	\033[0;35m
 GREEN	=	\033[1;32m
 RESET	=	\033[0m
 
-libft:
-	@$(MAKE) -C ./utils/libft all
+lib:
+	@$(MAKE) -C ./libft all
 
 $(NAME):	lib
 	@echo "${RED}[#################]"
@@ -66,19 +66,17 @@ $(NAME):	lib
 	@echo "${RED}[#################]"
 	@echo "${PURPLE}[#################]"
 	@echo "${PURPLE}[--- COMPILING mlx ---]${RESET}"
-	@$(GCC) $(FLAGS) $(MLXFLAGS) -c $(SRC)
+	@$(GCC) $(FLAGS) -c $(SRC) $(INCLUDE) $(MLXFLAGS)
+	@ar rc $(NAME) $(OBJS) $(LIBOBJS)
 	@echo "${PURPLE}[#################]"
 	@echo "${GREEN}[#################]"
-	@ar rc $(NAME) $(OBJS) $(LIBOBJS)
 	@echo "[--- BUILD SUCCESSFUL! ---]"
 	@echo "[#################]${RESET}"
 
-all:		$(NAME)
+all:	$(NAME)
 
-bonus:		all
-
-run0: all
-	clear && ./cub3D maps/map.cub
+#run0: all
+#	clear && ./cub3D maps/map.cub
 
 #run1: all
 #	clear && ./cub3D maps/valid_hip_hop.cub
@@ -88,14 +86,14 @@ norminette:
 endif
 
 clean :
-	@echo "\033[0;31m[--- CLEANING PROJECT ---]"
+	@echo "\033[0;31m[--- REMOVING OBJS ---]"
 	@rm -f $(OBJS)
-	@$(MAKE) -C ./utils/libft clean
+	@$(MAKE) -C ./libft clean
 
 fclean:	clean
-	@echo "\033[0;31m[--- CLEANING PROJECT ---]"
+	@echo "\033[0;31m[--- REMOVING cub3D ---]"
 	@rm -f $(NAME)
-	@$(MAKE) -C ./utils/libft fclean
+	@$(MAKE) -C ./libft fclean
 
 re:	fclean all
 

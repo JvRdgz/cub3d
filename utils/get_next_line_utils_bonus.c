@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:34:47 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/02/14 18:34:57 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:58:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "../includes/get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {

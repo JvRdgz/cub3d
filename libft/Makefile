@@ -3,14 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/05 17:07:18 by jarodrig          #+#    #+#              #
-#    Updated: 2020/10/27 21:20:14 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/01/17 14:14:33 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 

@@ -6,14 +6,14 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/12 18:52:31 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/17 14:56:42 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "key_linux.h"
-#include "key_macos.h"
-#include "select_os.h"
+#include "../includes/cub3d.h"
+#include "../includes/key_linux.h"
+#include "../includes/key_macos.h"
+#include "../includes/select_os.h"
 
 void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
 {
