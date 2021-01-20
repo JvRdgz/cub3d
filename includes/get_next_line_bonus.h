@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:34:09 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/02/17 14:07:29 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/20 21:28:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 4
 # endif
 # include <stddef.h>
 # include <unistd.h>

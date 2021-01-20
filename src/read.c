@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/17 15:34:07 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:58:26 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ void	read_map(t_raycaster *raycaster, char **argv)
 	int		read;
 
 	read = 0;
-	fd = open(argv[1], O_RDONLY);
+	// printf("Argumento: %s\n", argv[0]);
+	fd = open(argv[0], O_RDONLY);
+	if (fd == -1)
+		printf("\nError al leer el fichero\n");
 	while ((x = get_next_line(fd, &line)) > 0)
 	{
-		printf("\nHOLA\n");
+		// printf("\nHOLA\n");
 		// Para saber si lo lee correctamente.
 		printf("Linea: %s", line);
 		raycaster->r_map = &line;

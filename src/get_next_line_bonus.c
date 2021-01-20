@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:33:34 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/17 15:38:39 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/20 21:28:44 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_space_line(char *aux, char **line, int ret)
 		i++;
 	}
 	aux[i] = '\0';
+	// printf("\nSPACE: %s|\n", aux);
 	if (i < ft_strlen(aux))
 	{
 		*line = ft_substr(aux, 0, i);
@@ -62,15 +63,18 @@ char	*resize_memory(char *buf, char *aux)
 
 	if (aux)
 	{
-		// printf("\nAUX: %s HHH\n", aux);
+		// printf("\nAUX: %s|\n", aux);
 		temp = ft_strjoin(aux, buf);
 		free(aux);
 		aux = ft_strdup(temp);
 		free(temp);
 	}
 	else
+	{
+		// printf("\nFF\n");
 		aux = ft_strdup(buf);
-	printf("\nAUX: %s HHH\n", aux);
+	}
+	// printf("\nAUX: %s|\n", aux);
 	return (aux);
 }
 
@@ -80,9 +84,15 @@ int		get_next_line(int fd, char **line)
 	char			buf[BUFFER_SIZE + 1];
 	int				ret;
 
-	ret = 0;
+/*
+** 	ret = read(fd, buf, BUFFER_SIZE);
+** 	if (ret == -1)
+** 		return (-1);
+*/
+	// printf("\nread: %d\n", read(fd, buf, BUFFER_SIZE));
 	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
+		// printf("\nHHH\n");
 		if (ret == -1)
 			return (-1);
 		buf[ret] = '\0';
@@ -98,7 +108,9 @@ int		get_next_line(int fd, char **line)
 		*line = ft_strdup("");
 		return (ret);
 	}
+	printf("\nAUX: %s|\n", aux[fd]);
 	aux[fd] = ft_space_line(aux[fd], line, ret);
+	// printf("\nAUX: %s|\n", aux[fd]);
 	if (ret <= 0 && !aux[fd])
 		return (ret);
 	return (1);

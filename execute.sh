@@ -5,4 +5,4 @@
 #	-lbsd -lmlx -lXext -lX11 && ./a.out
 
 clang ./src/*.c ./utils/*.c -I ./includes/*.h \
-	-lbsd -lmlx -lXext -lX11 && ./a.out ./maps/map.cub && rm -rf ./includes/*.gch
+	-lmlx -lXext -lX11 && ./a.out ./maps/elpepe.txt && rm -rf ./includes/*.gch
