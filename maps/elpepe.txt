@@ -2,5 +2,5 @@ Esto es una prueba
 para ver si el puto gnl 
 lee
 correctamente
-	un jodido texto
+	un jodido archivo
 	    en coindiciones.

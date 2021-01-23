@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:33:34 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/20 21:28:44 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:02:04 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*ft_space_line(char *aux, char **line, int ret)
 {
 	char				*temp;
 	unsigned	int		i;
-
 	i = 0;
 	while (aux[i])
 	{
@@ -40,9 +39,13 @@ char	*ft_space_line(char *aux, char **line, int ret)
 	}
 	aux[i] = '\0';
 	// printf("\nSPACE: %s|\n", aux);
+	// printf("\nFFF: %d\n", ft_strlen(aux));
+	printf("\nFFF: %d\n", i);
 	if (i < ft_strlen(aux))
 	{
+		printf("\nFFF\n");
 		*line = ft_substr(aux, 0, i);
+		printf("\nHOLA: %s\n", line);
 		temp = ft_substr(aux, i + 1, ft_strlen(aux));
 		free(aux);
 		aux = ft_strdup(temp);
