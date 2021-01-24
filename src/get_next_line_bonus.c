@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 18:33:34 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/23 18:02:04 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/24 20:12:08 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,30 @@ char	*ft_space_line(char *aux, char **line, int ret)
 {
 	char				*temp;
 	unsigned	int		i;
+
 	i = 0;
+	// printf("\nAUX: %s|\n", aux);
 	while (aux[i])
 	{
 		if (aux[i] == '\n')
+		{
+			// printf("FF");
 			break ;
+		}
 		i++;
 	}
-	aux[i] = '\0';
-	// printf("\nSPACE: %s|\n", aux);
-	// printf("\nFFF: %d\n", ft_strlen(aux));
-	printf("\nFFF: %d\n", i);
+	// printf("\nAUX[I]: %c|\n", aux[i]);
+	// aux[++j] = '\0';
+	// printf("\nAUX[I]: %c|\n", aux[i]);
+	// printf("\nAUX: %s|\n", aux);
+	// printf("\nLENGTH: %d\n", ft_strlen(aux));
+	// printf("\nI: %d\n", i);
+	// printf("\nRET: %d|\n", ret);
 	if (i < ft_strlen(aux))
 	{
-		printf("\nFFF\n");
+		// printf("\nHHH\n");
 		*line = ft_substr(aux, 0, i);
-		printf("\nHOLA: %s\n", line);
+		// printf("\nHOLA: %s\n", line);
 		temp = ft_substr(aux, i + 1, ft_strlen(aux));
 		free(aux);
 		aux = ft_strdup(temp);
@@ -53,6 +61,7 @@ char	*ft_space_line(char *aux, char **line, int ret)
 	}
 	else if (ret == 0)
 	{
+		// printf("FF");
 		*line = aux;
 		aux = NULL;
 	}
@@ -67,7 +76,9 @@ char	*resize_memory(char *buf, char *aux)
 	if (aux)
 	{
 		// printf("\nAUX: %s|\n", aux);
+		// printf("\nBUF: %s|\n", buf);
 		temp = ft_strjoin(aux, buf);
+		// printf("\nTEMP: %s|\n", temp);
 		free(aux);
 		aux = ft_strdup(temp);
 		free(temp);
@@ -111,8 +122,9 @@ int		get_next_line(int fd, char **line)
 		*line = ft_strdup("");
 		return (ret);
 	}
-	printf("\nAUX: %s|\n", aux[fd]);
+	// printf("\nAUX: %s|\n", aux[fd]);
 	aux[fd] = ft_space_line(aux[fd], line, ret);
+	// printf("\nLINE: %s|\n", *line);
 	// printf("\nAUX: %s|\n", aux[fd]);
 	if (ret <= 0 && !aux[fd])
 		return (ret);
