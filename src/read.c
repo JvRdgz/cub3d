@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/24 22:08:55 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/25 21:00:35 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,38 @@
 ** Lee el mapa .cub utilizando el get_next_line(), y se guarda en
 ** la variable **world_map de la estructura.
 */
-void	memory_allocation(t_raycaster * raycaster, char **argv, int *fd, int *x, int *read)
+
+size_t		gnl_size(char *line)
 {
-	int		cont;
-	int		aux_fd;
-	int		aux_x;
-	int		aux_read;
-	char	*line;
+	int		i;
 
-	aux_fd = *fd;
-	aux_x = *x;
-	aux_read = *read;
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
+}
 
-	while ((aux_x = get_next_line(aux_fd, &line)) > 0)
-	{
-		// printf("\nHOLA\n");
-		// Para saber si lo lee correctamente.
-		// raycaster->r_map = &line;
-		// printf("\nR_MAP: %s", *raycaster->r_map);
-		free(line);
-		aux_read = 1;
-		cont++;
-	}
-	// AQUI NO COGE EL free() del bucle porque sale antes de llegar ahi.
-	printf("\nLINE: %s\n", line);
-	raycaster->r_map = ft_calloc(sizeof (char *), cont + 1);
+char	*memory_allocation(t_raycaster *raycaster, char *line)
+{
+	char	*map;
+	// int		i;
+
+	if (!(map = (char *)malloc(sizeof(char) * (gnl_size(line) + 1))))
+		return (NULL);
+	// i = 0;
+/*
+** 
+** 	while (line[i])
+** 	{
+** 		map[i] = line[i];
+** 		i++;
+** 	}
+*/
+	ft_memcpy(map, line, (gnl_size(line)) + 1);
+	// map[i] = '\0';
+	printf("\nMAP: %s\n", map);
+	free(line);
+	return (map);
 }
 void	read_map(t_raycaster *raycaster, char **argv)
 {
@@ -56,19 +63,20 @@ void	read_map(t_raycaster *raycaster, char **argv)
 		printf("\nError al leer el fichero\n");
 	else
 	{
-		memory_allocation(raycaster, argv, &fd, &x, &read);
 		while ((x = get_next_line(fd, &line)) > 0)
 		{
 			// printf("\nHOLA\n");
 			// Para saber si lo lee correctamente.
 			printf("\n%s", line);
-			raycaster->r_map = &line;
 			// printf("\nR_MAP: %s", *raycaster->r_map);
+			*raycaster->r_map = memory_allocation(raycaster, *argv);
 			free(line);
 			read = 1;
 		}
+
 		// AQUI NO COGE EL free() del bucle porque sale antes de llegar ahi.
 		// printf("\nLINE: %s\n", line);
+
 		if (read == 0)
 			printf("\n\nNo ha entrado en el while de lectura.\n");
 		else
