@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/25 20:55:40 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/26 21:05:59 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_dat
 void	static	dda_algorithm(t_player *player, t_raycaster *raycaster);
 void	static	set_wall_dimensions(t_raycaster *raycaster);
 void	read_map(t_raycaster *raycaster, char **argv);
-char	*memory_allocation(t_raycaster *raycaster, char *line);
+void	memory_allocation(t_raycaster *raycaster, char *line);
 size_t	gnl_size(char *line);
 
 #endif

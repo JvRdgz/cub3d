@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/25 21:02:38 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/26 21:09:41 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,24 @@ size_t		gnl_size(char *line)
 	return (i);
 }
 
-char	*memory_allocation(t_raycaster *raycaster, char *line)
+void	memory_allocation(t_raycaster *raycaster, char *line)
 {
 	char	*map;
 	// int		i;
 
 	if (!(map = (char *)malloc(sizeof(char) * (gnl_size(line) + 1))))
 		return (NULL);
+	if (!(*raycaster->r_map = (char *)malloc(sizeof(char) * (gnl_size(line) + 1))))
+		return (NULL);
+	
+	/**
+	 * RESERVAR MEMORIA PARA EL MAPA DE LA ESTRUCTURA. PARA ELLO NECESITO HACER UN MALLOC POR
+	 * CADA VEZ QUE SE LEE UNA LINEA DEL FICHERO, SUMANDO LA ANTERIOR RESERVA DE MEMORIA.
+	 * PARA ELLO PUEDO CREAR UNA VARIABLE QUE GUARDE EL LENGTH DE GNL_SIZE() Y SE ACTUALICE POR
+	 * CADA VEZ QUE ENTRE EN LA FUNCION DE NUEVO. A LA HORA DE RESERVAR LA MEMORIA CON MALLOC(),
+	 * LE SUMO EL VALOR DE LA NUEVA VARIABLE QUE GUARDA EL SIZE DEL GNL.
+	 */
+
 	// i = 0;
 /*
 ** 
@@ -45,9 +56,10 @@ char	*memory_allocation(t_raycaster *raycaster, char *line)
 */
 	ft_memcpy(map, line, (gnl_size(line)) + 1);
 	// map[i] = '\0';
+	raycaster->r_map = map;
 	printf("\nMAP: %s\n", map);
 	free(line);
-	return (map);
+	// return (map);
 }
 void	read_map(t_raycaster *raycaster, char **argv)
 {
@@ -69,11 +81,11 @@ void	read_map(t_raycaster *raycaster, char **argv)
 			// Para saber si lo lee correctamente.
 			printf("\n%s", line);
 			// printf("\nR_MAP: %s", *raycaster->r_map);
-			*raycaster->r_map = memory_allocation(raycaster, *argv);
+			// raycaster->r_map = memory_allocation(raycaster, *argv);
 			free(line);
 			read = 1;
 		}
-
+		// printf("\nMapa %s\n", *raycaster->r_map);
 		// AQUI NO COGE EL free() del bucle porque sale antes de llegar ahi.
 		// printf("\nLINE: %s\n", line);
 
