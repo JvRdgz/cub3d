@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/26 21:05:59 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/27 20:46:06 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,10 @@ typedef	struct		s_raycaster
 */
 	int				draw_start;
 	int				draw_end;
+/*
+** Variable para calcular el length total del gnl
+*/
+	size_t			gnl_length;
 }					t_raycaster;
 
 // typedef	struct		s_map
@@ -155,7 +159,7 @@ void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_dat
 void	static	dda_algorithm(t_player *player, t_raycaster *raycaster);
 void	static	set_wall_dimensions(t_raycaster *raycaster);
 void	read_map(t_raycaster *raycaster, char **argv);
-void	memory_allocation(t_raycaster *raycaster, char *line);
+char	memory_allocation(t_raycaster *raycaster, char *line);
 size_t	gnl_size(char *line);
 
 #endif
