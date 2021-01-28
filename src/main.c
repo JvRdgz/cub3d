@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/24 20:41:44 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/29 00:02:01 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int argc, char *argv[])
 		printf("\nNumero de argumentos invalido\n");
 	else
 	{
-		read_map(&raycaster, &argv[1]);
+		read_file(&raycaster, &argv[1]);
 		printf("\nMAPA: %s|\n", *raycaster.r_map);
 	}
 	return (0);

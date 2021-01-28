@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/27 20:49:48 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/29 00:32:41 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,34 @@
 ** la variable **world_map de la estructura.
 */
 
-size_t		gnl_size(char *line)
+void	read_map(t_raycaster *raycaster, int *fd, char *line)
+{
+	int		read;
+	int		x;
+	int		aux_fd;
+
+	aux_fd = *fd;
+	read = 0;
+	while ((x = get_next_line(aux_fd, &line)) > 0)
+	{
+		// printf("\nHOLA\n");
+		// Para saber si lo lee correctamente.
+		// printf("\n%s", line);
+		raycaster->gnl_length = gnl_size(line);
+		// printf("\nR_MAP: %s", *raycaster->r_map);
+		// raycaster->r_map = memory_allocation(raycaster, *argv);
+		// *raycaster->r_map = memory_allocation(raycaster, *argv);
+		free(line);
+		read = 1;
+	}
+	// printf("\nGNL LENGTH: %zu\n", raycaster->gnl_length);
+	// printf("\nMapa %s\n", *raycaster->r_map);
+	// AQUI NO COGE EL free() del bucle porque sale antes de llegar ahi.
+	// printf("\nLINE: %s\n", line);
+	close(aux_fd);
+}
+
+size_t	gnl_size(char *line)
 {
 	int		i;
 
@@ -28,15 +55,16 @@ size_t		gnl_size(char *line)
 	return (i);
 }
 
-char	memory_allocation(t_raycaster *raycaster, char *line)
+void	memory_allocation(t_raycaster *raycaster, char *line)
 {
-	char	*map;
+	// char	*map;
 	// int		i;
 
-	if (!(map = (char *)malloc(sizeof(char) * (raycaster->gnl_length + 1))))
-		return (NULL);
-	if (!(*raycaster->r_map = (char *)malloc(sizeof(char) * (raycaster->gnl_length + 1))))
-		return (NULL);
+	// if (!(map = (char *)malloc(sizeof(char) * (raycaster->gnl_length + 1))))
+		// return (NULL);
+	raycaster->r_map = ft_calloc(raycaster->gnl_length + 1, sizeof(char));
+	// if (!(*raycaster->r_map = (char *)malloc(sizeof(char) * (raycaster->gnl_length + 1))))
+		// return (NULL);
 	
 	/**
 	 * RESERVAR MEMORIA PARA EL MAPA DE LA ESTRUCTURA. PARA ELLO NECESITO HACER UN MALLOC POR
@@ -55,14 +83,16 @@ char	memory_allocation(t_raycaster *raycaster, char *line)
 ** 		i++;
 ** 	}
 */
-	ft_memcpy(map, line, (gnl_size(line)) + 1);
+	// ft_memcpy(map, line, (raycaster->gnl_length + 1));
+	// ft_memcpy(*raycaster->r_map, line, (raycaster->gnl_length + 1));
 	// map[i] = '\0';
-	raycaster->r_map = map;
-	printf("\nMAP: %s\n", map);
+	// *raycaster->r_map = map;
+	printf("\nMAP: %s\n", *raycaster->r_map);
 	free(line);
 	// return (map);
 }
-void	read_map(t_raycaster *raycaster, char **argv)
+
+void	read_file(t_raycaster *raycaster, char **argv)
 {
 	int		fd;
 	int		x;
@@ -76,26 +106,23 @@ void	read_map(t_raycaster *raycaster, char **argv)
 		printf("\nError al leer el fichero\n");
 	else
 	{
+		read_map(raycaster, &fd, line);
 		while ((x = get_next_line(fd, &line)) > 0)
 		{
 			// printf("\nHOLA\n");
 			// Para saber si lo lee correctamente.
 			printf("\n%s", line);
-			raycaster->gnl_length = gnl_size(line);
 			// printf("\nR_MAP: %s", *raycaster->r_map);
 			// raycaster->r_map = memory_allocation(raycaster, *argv);
+			// *raycaster->r_map = memory_allocation(raycaster, *argv);
+			ft_memcpy(*raycaster->r_map, line, (raycaster->gnl_length + 1));
 			free(line);
 			read = 1;
 		}
-		// printf("\nGNL LENGTH: %zu\n", raycaster->gnl_length);
-		// printf("\nMapa %s\n", *raycaster->r_map);
-		// AQUI NO COGE EL free() del bucle porque sale antes de llegar ahi.
-		// printf("\nLINE: %s\n", line);
-
-		if (read == 0)
-			printf("\n\nNo ha entrado en el while de lectura.\n");
-		else
-			printf("\n\nMapa leido correctamente.\n");
 	}
+	if (read == 0)
+		printf("\n\nNo ha entrado en el while de lectura.\n");
+	else
+		printf("\n\nMapa leido correctamente.\n");
 	close(fd);
 }
