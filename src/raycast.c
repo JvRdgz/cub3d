@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/17 14:56:42 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/01/31 20:49:38 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 #include "../includes/key_macos.h"
 #include "../includes/select_os.h"
 
-void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
+void			initialize_window(t_data *data)
+{
+	data->mlx_ptr = mlx_init();
+	data->win = mlx_new_window(data->mlx_ptr, screenWidth, screenHeight, "cub3d");
+}
+
+static	void	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
 {
 /*
 ** 	raycaster->camerax = 2 * X / (double)data->win_width -1;
@@ -46,7 +52,7 @@ void	static	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_dat
 	}
 }
 
-void	static	dda_algorithm(t_player *player, t_raycaster *raycaster)
+static	void	dda_algorithm(t_player *player, t_raycaster *raycaster)
 {
 	while (raycaster->hit == 0)
 	{
@@ -74,7 +80,7 @@ void	static	dda_algorithm(t_player *player, t_raycaster *raycaster)
 		raycaster->perp_wall_dist = (raycaster->map_y - player->pos_y + (1 - raycaster->step_y) / 2) / raycaster->ray_dir_y;
 }
 
-void	static	set_wall_dimensions(t_raycaster *raycaster)
+static	void	set_wall_dimensions(t_raycaster *raycaster)
 {
 	raycaster->line_heigth = (int)(raycaster->h / raycaster->perp_wall_dist);
 	raycaster->draw_start = (((-1) * raycaster->line_heigth) / 2) + (raycaster->h / 2);
