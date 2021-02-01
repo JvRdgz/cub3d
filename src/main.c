@@ -6,12 +6,25 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/29 00:02:01 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/01 21:59:02 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+int		main(void)
+{
+	t_data		data;
+	t_player	player;
+	t_raycaster	raycaster;
+
+	initialize_player(&player);
+	initialize_window(&data);
+	initialize_raycaster(&player, &raycaster, &data);
+	return (0);
+}
+
+/*
 int		main(int argc, char *argv[])
 {
 	// Tiene que leer como el mapa por argumento. argc == 1.
@@ -25,3 +38,4 @@ int		main(int argc, char *argv[])
 	}
 	return (0);
 }
+*/

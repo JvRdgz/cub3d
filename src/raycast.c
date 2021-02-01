@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/31 20:49:38 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/01 21:31:10 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void			initialize_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
-	data->win = mlx_new_window(data->mlx_ptr, screenWidth, screenHeight, "cub3d");
+	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
 }
 
 static	void	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)

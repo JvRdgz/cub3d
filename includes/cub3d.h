@@ -6,19 +6,19 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/31 21:04:12 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/01 21:30:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define mapWidth 24
-# define mapHeight 24
+# define MAPWIDTH 24
+# define MAPHEIGTH 24
 /*
 ** Coger la resolucion del archivo del mapa con el gnl
 */
-# define screenWidth 640
-# define screenHeight 480
+# define SCREENWIDTH 640
+# define SCREENHEIGTH 480
 # include <mlx.h>
 # include <stdio.h>
 # include <unistd.h>
