@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/01 21:31:10 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/02 20:31:21 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,39 @@ void			initialize_window(t_data *data)
 
 static	void	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
 {
+	int			i;
 /*
 ** 	raycaster->camerax = 2 * X / (double)data->win_width -1;
 */
-	raycaster->ray_dir_x = player->dir_x + player->plane_x * raycaster->camera_x;
-	raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;
-	raycaster->delta_dist_x = abs(1 / raycaster->ray_dir_x);
-	raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
-	if (raycaster->ray_dir_x < 0)
+	i = 0;
+	while (i < SCREENWIDTH)
 	{
-		raycaster->step_x = -1;
-		raycaster->side_dist_x = raycaster->delta_dist_x * (player->pos_x - raycaster->map_x);
-	}
-	else
-	{
-		raycaster->step_x = 1;
-		raycaster->side_dist_x = raycaster->delta_dist_x * ((raycaster->map_x + 1) - player->pos_x);
-	}
-	if (raycaster->ray_dir_y)
-	{
-		raycaster->step_y = -1;
-		raycaster->side_dist_y = raycaster->delta_dist_y * (player->pos_y - raycaster->map_y);
-	}
-	else
-	{
-		raycaster->step_y = 1;
-		raycaster->side_dist_y = raycaster->delta_dist_y * ((raycaster->map_y + 1) - player->pos_y);
+		raycaster->camera_x = 2 * i / (double)SCREENWIDTH - 1;
+		raycaster->ray_dir_x = player->dir_x + player->plane_x * raycaster->camera_x;
+		raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;
+		raycaster->delta_dist_x = abs(1 / raycaster->ray_dir_x);
+		raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
+		if (raycaster->ray_dir_x < 0)
+		{
+			raycaster->step_x = -1;
+			raycaster->side_dist_x = raycaster->delta_dist_x * (player->pos_x - raycaster->map_x);
+		}
+		else
+		{
+			raycaster->step_x = 1;
+			raycaster->side_dist_x = raycaster->delta_dist_x * ((raycaster->map_x + 1) - player->pos_x);
+		}
+		if (raycaster->ray_dir_y)
+		{
+			raycaster->step_y = -1;
+			raycaster->side_dist_y = raycaster->delta_dist_y * (player->pos_y - raycaster->map_y);
+		}
+		else
+		{
+			raycaster->step_y = 1;
+			raycaster->side_dist_y = raycaster->delta_dist_y * ((raycaster->map_y + 1) - player->pos_y);
+		}
+		i++;
 	}
 }
 
@@ -68,6 +75,7 @@ static	void	dda_algorithm(t_player *player, t_raycaster *raycaster)
 			raycaster->map_y += raycaster->step_y;
 			raycaster->side = 1;
 		}
+		raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
 		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] > 0)
 			raycaster->hit = 1;
 	}

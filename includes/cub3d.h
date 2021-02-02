@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/01 21:30:45 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/02 20:22:33 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ typedef	struct		s_raycaster
 ** de esta forma nos permitira saber cuando estamos chocando contra una pared
 ** (1) o no (0).
 */
-	double		**world_map;
+	int			**world_map;
 /*
 ** Variable para guardar el mapa leido.
 */
