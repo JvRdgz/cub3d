@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/02 20:22:33 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/03 22:47:57 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef	struct	s_player
 	double		oldtime;
 }				t_player;
 
-typedef	struct		s_raycaster
+typedef	struct	s_raycaster
 {
 /*
 ** Variables para el loop del raycasting:
@@ -154,6 +154,15 @@ typedef	struct		s_raycaster
 */
 	size_t		gnl_length;
 }				t_raycaster;
+/*
+** Gestion de colores.
+*/
+typedef	struct	s_color
+{
+	int			color;
+	int			x_color;
+	int			y_color;
+}				t_color;
 
 // typedef	struct		s_map
 // {
@@ -172,5 +181,8 @@ void			read_map(t_raycaster *raycaster, int *fd, char *line);
 static	int		**map_aux();
 void			initialize_window(t_data *data);
 void			initialize_player(t_player *player);
+int				destroy_win(t_data *data);
+void			quit(char *str);
+void			choose_color(t_raycaster *raycaster, t_color *color);
 
 #endif
