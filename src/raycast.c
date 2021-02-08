@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/03 22:48:30 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/08 22:28:56 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,49 @@ void			choose_color(t_raycaster *raycaster, t_color *color)
 		color->color = 0xFF8C00;
 	else if (get_color == '0')
 		color->color = 0x008080;
+	if (raycaster->side == 1)
+		color->color /= 2;
 }
+/*
+void          calc_wall_height(t_raycaster *rc)
+{
+  int         line_height;
 
+  if (rc->side == 0)
+    rc->perp_wall_dist = (rc->map_x - rc->player_pos_x + (1 - rc->step_x) / 2) / rc->ray_dir_x;
+  else
+    rc->perp_wall_dist = (rc->map_y - rc->player_pos_y + (1 - rc->step_y) / 2) / rc->ray_dir_y;
+  line_height = (int)(WIN_Y / rc->perp_wall_dist);
+  rc->draw_start = -line_height / 2 + WIN_Y / 2;
+  if (rc->draw_start < 0)
+    rc->draw_start = 0;
+  rc->draw_end = line_height / 2 + WIN_Y / 2;
+  if (rc->draw_end >= WIN_Y)
+    rc->draw_end = WIN_Y - 1;
+}
+*/
+
+void			init_draw(t_raycaster *raycaster, t_player *player)
+{
+	player->pos_x = 6;
+	player->pos_y = 8;
+	player->dir_x = -1;
+	player->dir_y = 0;
+	player->plane_x = 0;
+	player->plane_y = 0.66;
+	player->time = 0;
+	player->oldtime = 0;
+	player->speed = .2;
+}
+/*
+void			draw_wall(t_data *data, t_raycaster *raycaster)
+{
+	int		line_height;
+
+	if (raycaster->side == 0)
+		raycaster->perp_wall_dist = 
+}
+*/
 static	void	dda_algorithm(t_player *player, t_raycaster *raycaster)
 {
 	while (raycaster->hit == 0)

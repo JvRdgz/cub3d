@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/03 22:47:57 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/08 22:35:11 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ typedef	struct	s_player
 */
 	double		time;
 	double		oldtime;
+/*
+** Velocidad del jugador
+*/
+	double		speed;
+/*
+** Variables de direccion del personaje.
+*/
+	int			up;
+	int			down;
+	int			left;
+	int			right;
 }				t_player;
 
 typedef	struct	s_raycaster
@@ -184,5 +195,10 @@ void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
 void			quit(char *str);
 void			choose_color(t_raycaster *raycaster, t_color *color);
+void			init_draw(t_raycaster *raycaster, t_player *player);
+void			up_move(t_raycaster *raycaster, t_player *player);
+void			down_move(t_raycaster *raycaster, t_player *player);
+void			left_move(t_raycaster *raycaster, t_player *player);
+void			right_move(t_raycaster *raycaster, t_player *player);
 
 #endif
