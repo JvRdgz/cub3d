@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/08 22:35:11 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:06:54 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ typedef	struct	s_player
 */
 	double		dir_x;
 	double		dir_y;
+/*
+** ¿?
+*/
+	double		old_dir_x;
+	double		old_plane_x;
+	double		root_speed;
 /*
 ** Plano de la camara del jugador
 ** (Perpendicular a dir, aunque puede cambiar length)

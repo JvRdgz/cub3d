@@ -1,3 +1,3 @@
 #!bin/bash
 
-clang main.c -lbsd -lmlx -lXext -lX11 && ./a.out
+clang main.c -lmlx -lXext -lX11 && ./a.out
