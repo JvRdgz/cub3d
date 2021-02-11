@@ -6,13 +6,13 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 20:19:39 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/01 21:30:22 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:26:12 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int		**map_aux()
+static	int		map_aux()
 {
 	int	worldMap[MAPWIDTH][MAPHEIGTH]=
 	{

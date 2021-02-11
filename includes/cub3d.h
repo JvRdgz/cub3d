@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/10 18:06:54 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:45:53 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define SCREENWIDTH 640
 # define SCREENHEIGTH 480
 # include <mlx.h>
+# include "../libft/libft.h"
+// # include "../mlx/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -29,7 +31,6 @@
 # include "key_linux.h"
 // # include "key_macos.h"
 # include "select_os.h"
-# include "../libft/libft.h"
 
 typedef	struct	s_data
 {
@@ -195,7 +196,7 @@ void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
-static	int		**map_aux();
+static	int		map_aux();
 void			initialize_window(t_data *data);
 void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
@@ -206,5 +207,6 @@ void			up_move(t_raycaster *raycaster, t_player *player);
 void			down_move(t_raycaster *raycaster, t_player *player);
 void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
+int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
 
 #endif

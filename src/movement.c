@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 22:28:01 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/10 21:51:50 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:37:33 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,15 @@ void	left_move(t_raycaster *raycaster, t_player *player)
 
 int		key_hooks(int key, t_raycaster *raycaster, t_player *player)
 {
-	if (key == )
+	if (key == ESC)
+		quit("Closing...");
+	else if (key == UP)
+		up_move(raycaster, player);
+	else if (key == DOWN)
+		down_move(raycaster, player);
+	else if (key == LEFT)
+		left_move(raycaster, player);
+	else if (key == RIGHT)
+		right_move(raycaster, player);
+	return(0);
 }

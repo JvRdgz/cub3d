@@ -1,0 +1,1 @@
+clang main3.c -lmlx -lXext -lX11 && ./a.out

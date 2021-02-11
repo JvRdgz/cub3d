@@ -6,14 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/08 22:28:56 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:45:43 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/key_linux.h"
-#include "../includes/key_macos.h"
-#include "../includes/select_os.h"
 
 void			initialize_window(t_data *data)
 {

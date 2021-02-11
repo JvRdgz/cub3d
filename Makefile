@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/01/31 20:18:46 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/11 18:50:38 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC		=	./src/get_next_line_bonus.c\
 			./src/raycast.c\
 			./utils/get_next_line_utils_bonus.c\
 
-LIBOBJS	=	./libft/*.o
+# LIBOBJS	=	./libft/*.o
+LIBFT_DIR = libft
+LIBS = libft/libft.a
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -56,10 +58,12 @@ PURPLE	=	\033[0;35m
 GREEN	=	\033[1;32m
 RESET	=	\033[0m
 
-lib:
-	@$(MAKE) -C ./libft all
+$(LIBS):
+	@$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME):	lib
+all:	$(NAME)
+
+$(NAME):	$(LIBS)
 	@echo "${RED}[#################]"
 	@echo "${RED}[--- REMOVING a.out ---]${RESET}"
 	@rm -rf cub3D
@@ -67,13 +71,11 @@ $(NAME):	lib
 	@echo "${PURPLE}[#################]"
 	@echo "${PURPLE}[--- COMPILING mlx ---]${RESET}"
 	@$(GCC) $(FLAGS) -c $(SRC) $(INCLUDE) $(MLXFLAGS)
-	@ar rc $(NAME) $(OBJS) $(LIBOBJS)
+	@ar rc $(NAME) $(OBJS) $(LIBS)
 	@echo "${PURPLE}[#################]"
 	@echo "${GREEN}[#################]"
 	@echo "[--- BUILD SUCCESSFUL! ---]"
 	@echo "[#################]${RESET}"
-
-all:	$(NAME)
 
 #run0: all
 #	clear && ./cub3D maps/map.cub
