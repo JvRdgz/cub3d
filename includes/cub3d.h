@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/11 20:45:53 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:57:57 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,14 +189,14 @@ typedef	struct	s_color
 // */
 // 	int				**world_map;
 // }					t_map;
-static	void	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data);
-static	void	dda_algorithm(t_player *player, t_raycaster *raycaster);
-static	void	set_wall_dimensions(t_raycaster *raycaster);
+int				map_aux();
+void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data);
+void			dda_algorithm(t_player *player, t_raycaster *raycaster);
+void			set_wall_dimensions(t_raycaster *raycaster);
 void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
-static	int		map_aux();
 void			initialize_window(t_data *data);
 void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);

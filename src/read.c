@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 20:27:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/01/31 18:27:24 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/14 19:31:26 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 void	read_map(t_raycaster *raycaster, int *fd, char *line)
 {
-	int		read;
+	// int		read;
 	int		x;
 	int		aux_fd;
 
 	aux_fd = *fd;
-	read = 0;
+	// read = 0;
 	while ((x = get_next_line(aux_fd, &line)) > 0)
 	{
 		// printf("\nHOLA\n");
@@ -35,7 +35,7 @@ void	read_map(t_raycaster *raycaster, int *fd, char *line)
 		// raycaster->r_map = memory_allocation(raycaster, *argv);
 		// *raycaster->r_map = memory_allocation(raycaster, *argv);
 		free(line);
-		read = 1;
+		// read = 1;
 	}
 	// printf("\nGNL LENGTH: %zu\n", raycaster->gnl_length);
 	// printf("\nMapa %s\n", *raycaster->r_map);

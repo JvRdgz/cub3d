@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/11 20:45:43 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:34:15 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			draw_wall(t_data *data, t_raycaster *raycaster)
 		raycaster->perp_wall_dist = 
 }
 */
-static	void	dda_algorithm(t_player *player, t_raycaster *raycaster)
+void			dda_algorithm(t_player *player, t_raycaster *raycaster)
 {
 	while (raycaster->hit == 0)
 	{
@@ -105,7 +105,7 @@ static	void	dda_algorithm(t_player *player, t_raycaster *raycaster)
 		raycaster->perp_wall_dist = (raycaster->map_y - player->pos_y + (1 - raycaster->step_y) / 2) / raycaster->ray_dir_y;
 }
 
-static	void	set_wall_dimensions(t_raycaster *raycaster)
+void			set_wall_dimensions(t_raycaster *raycaster)
 {
 	raycaster->line_heigth = (int)(raycaster->h / raycaster->perp_wall_dist);
 	raycaster->draw_start = (((-1) * raycaster->line_heigth) / 2) + (raycaster->h / 2);
@@ -116,7 +116,7 @@ static	void	set_wall_dimensions(t_raycaster *raycaster)
 		raycaster->draw_end = raycaster->h - 1;
 }
 
-static	void	initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
+void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
 {
 	int			i;
 /*

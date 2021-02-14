@@ -6,23 +6,32 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/11 18:50:38 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/14 19:59:42 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= 	cub3D
+NAME	= 	cub3d
 
-SRC		=	./src/get_next_line_bonus.c\
+SRC		=	./src/color.c\
+			./src/get_next_line_bonus.c\
 			./src/main.c\
-			./src/read.c\
+			./src/map.c\
+			./src/movement.c\
+			./src/player.c\
 			./src/raycast.c\
+			./src/read.c\
 			./utils/get_next_line_utils_bonus.c\
+			./utils/mlx_utilities.c\
 
-# LIBOBJS	=	./libft/*.o
+# LIBOBJ	=	./libft/*.o
 LIBFT_DIR = libft
 LIBS = libft/libft.a
 
-OBJS	=	$(SRC:.c=.o)
+OBJ		=	$(SRC:.c=.o)
+
+OBJS	=	./*.o
+
+NAME_DIR	=	./cub3d
 
 ####### DETECCION DE S.O. PROPORCIONADO POR @agutierr!! ###########
 
@@ -44,58 +53,60 @@ endif
 ############### COMPILADORES SEGUN S.O. #####################
 
 FLAGS	=	-Wall -Wall -Werror
-ifeq ($(detected_OS),Linux)
-	GCC	=	clang
-endif
-ifeq ($(detected_OS),Darwin)
-	GCC	=	gcc
-endif
+#ifeq ($(detected_OS),Linux)
+	#GCC	=	gcc
+#endif
+#ifeq ($(detected_OS),Darwin)
+	#GCC	=	gcc
+#endif
 
-INCLUDE	=	-I includes
+GCC	=		gcc
+
+INCLUDE	=	./includes/cub3d.h
 
 RED		=	\033[0;31m
-PURPLE	=	\033[0;35m
-GREEN	=	\033[1;32m
+BLUE	=	\033[0;34m
+GREEN	=	\033[0;32m
 RESET	=	\033[0m
-
-$(LIBS):
-	@$(MAKE) -C $(LIBFT_DIR)
 
 all:	$(NAME)
 
+$(LIBS):
+	@echo ""
+	@echo "${BLUE}[--- COMPILING libft ---]${RESET}"
+	@echo ""
+	@$(MAKE) -C $(LIBFT_DIR)
+
 $(NAME):	$(LIBS)
-	@echo "${RED}[#################]"
-	@echo "${RED}[--- REMOVING a.out ---]${RESET}"
-	@rm -rf cub3D
-	@echo "${RED}[#################]"
-	@echo "${PURPLE}[#################]"
-	@echo "${PURPLE}[--- COMPILING mlx ---]${RESET}"
-	@$(GCC) $(FLAGS) -c $(SRC) $(INCLUDE) $(MLXFLAGS)
-	@ar rc $(NAME) $(OBJS) $(LIBS)
-	@echo "${PURPLE}[#################]"
-	@echo "${GREEN}[#################]"
-	@echo "[--- BUILD SUCCESSFUL! ---]"
-	@echo "[#################]${RESET}"
+	@echo "${BLUE}[--- REMOVING old cub3d ---]${RESET}"
+	@echo ""
+	@rm -rf cub3d
+	@echo "${BLUE}[--- COMPILING cub3d ---]${RESET}"
+	@echo ""
+	@$(GCC) $(FLAGS) -c $(SRC) $(MLXFLAGS)
+	@ar rc $(NAME) $(OBJS)
+	@echo "${GREEN}[--- BUILD SUCCESSFUL! ---]"
+	@echo ""
 
 #run0: all
-#	clear && ./cub3D maps/map.cub
+#	clear && ./cub3d maps/map.cub
 
 #run1: all
-#	clear && ./cub3D maps/valid_hip_hop.cub
+#	clear && ./cub3d maps/valid_hip_hop.cub
 ifeq ($(detected_OS),Darwin)
 norminette:
 	norminette src/* includes/* utils/*
 endif
 
 clean :
-	@echo "\033[0;31m[--- REMOVING OBJS ---]"
-	@rm -f $(OBJS)
-	@$(MAKE) -C ./libft clean
+	@echo "${GREEN}[--- REMOVING OBJ ---]${RESET}"
+	@rm -rf $(OBJS)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean:	clean
-	@echo "\033[0;31m[--- REMOVING cub3D ---]"
-	@rm -f $(NAME)
-	@$(MAKE) -C ./libft fclean
+	@echo "${GREEN}[--- REMOVING cub3d ---]${RESET}"
+	@rm -f $(NAME_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re:	fclean all
 

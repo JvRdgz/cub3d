@@ -1,2 +1,6 @@
 a.out
 .vscode
+*.o
+cub3d
+includes/*.h.gch
+raycaster-sdl

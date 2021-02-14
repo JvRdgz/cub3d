@@ -6,13 +6,13 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 20:19:39 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/11 20:26:12 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/14 18:34:35 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int		map_aux()
+int		map_aux()
 {
 	int	worldMap[MAPWIDTH][MAPHEIGTH]=
 	{
@@ -41,5 +41,5 @@ static	int		map_aux()
 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		};
-		return(worldMap);
+		return(worldMap[MAPWIDTH][MAPHEIGTH]);
 }
