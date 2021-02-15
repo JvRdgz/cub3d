@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/14 19:59:42 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/15 11:36:07 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,13 +54,13 @@ endif
 
 FLAGS	=	-Wall -Wall -Werror
 #ifeq ($(detected_OS),Linux)
-	#GCC	=	gcc
+	#CC	=	gcc
 #endif
 #ifeq ($(detected_OS),Darwin)
-	#GCC	=	gcc
+	#CC	=	gcc
 #endif
 
-GCC	=		gcc
+CC	=		gcc
 
 INCLUDE	=	./includes/cub3d.h
 
@@ -77,14 +77,14 @@ $(LIBS):
 	@echo ""
 	@$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME):	$(LIBS)
+$(NAME):	$(LIBS) $(OBJ)
 	@echo "${BLUE}[--- REMOVING old cub3d ---]${RESET}"
 	@echo ""
 	@rm -rf cub3d
 	@echo "${BLUE}[--- COMPILING cub3d ---]${RESET}"
 	@echo ""
-	@$(GCC) $(FLAGS) -c $(SRC) $(MLXFLAGS)
-	@ar rc $(NAME) $(OBJS)
+	@$(CC) $(SRC) $(FLAGS) $(MLXFLAGS) -o $(NAME)
+	#@ar rc $(NAME) $(OBJ)
 	@echo "${GREEN}[--- BUILD SUCCESSFUL! ---]"
 	@echo ""
 
@@ -100,7 +100,7 @@ endif
 
 clean :
 	@echo "${GREEN}[--- REMOVING OBJ ---]${RESET}"
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean:	clean
