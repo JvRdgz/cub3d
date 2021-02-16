@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/15 21:14:14 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/16 21:04:54 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ OBJS	=	./*.o
 
 NAME_DIR	=	./cub3d
 
-####### DETECCION DE S.O. PROPORCIONADO POR @agutierr!! ###########
-
 # Sistema Windows
 ifeq ($(OS),Windows_NT)
 	detected_OS := Windows
@@ -53,12 +51,6 @@ endif
 ############### COMPILADORES SEGUN S.O. #####################
 
 FLAGS	=	-Wall -Wall -Werror
-#ifeq ($(detected_OS),Linux)
-	#CC	=	gcc
-#endif
-#ifeq ($(detected_OS),Darwin)
-	#CC	=	gcc
-#endif
 
 CC	=		gcc
 
@@ -83,7 +75,7 @@ $(NAME):	$(LIBS) $(OBJ)
 	@rm -rf cub3d
 	@echo "${BLUE}[--- COMPILING cub3d ---]${RESET}"
 	@echo ""
-	@$(CC) $(SRC) $(FLAGS) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(SRC) $(FLAGS) $(MLXFLAGS) -Llibft -lft -o $(NAME)
 	#@ar rc $(NAME) $(OBJ)
 	@echo "${GREEN}[--- BUILD SUCCESSFUL! ---]"
 	@echo ""
