@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/14 18:34:15 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/16 21:33:26 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void			initialize_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
+	mlx_loop(data->mlx_ptr);
 }
 
 void			choose_color(t_raycaster *raycaster, t_color *color)
