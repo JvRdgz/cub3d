@@ -6,3 +6,6 @@ https://www.asidesigned.com/project-wolf3d.html
 # Para descargar libreria libsdl para ver ejemplo raycasting
 https://github.com/matroyer/raycaster-sdl
 https://www.libsdl.org/download-2.0.php
+
+Curso Raycasting C
+https://courses.pikuma.com/courses/raycasting-c

@@ -6,13 +6,14 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/16 21:04:54 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/17 22:21:52 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	cub3d
 
 SRC		=	./src/color.c\
+			./src/draw.c\
 			./src/get_next_line_bonus.c\
 			./src/main.c\
 			./src/map.c\

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 22:28:01 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/11 20:37:33 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/17 22:42:34 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	left_move(t_raycaster *raycaster, t_player *player)
 		player->dir_y = player->old_dir_x * sin(player->root_speed) + player->dir_y * cos(player->root_speed);
 		player->old_plane_x = player->plane_x;
 		player->plane_x = player->plane_x * cos(player->root_speed) -
-			player->plane_y * sin(player->root_speed);
+		player->plane_y * sin(player->root_speed);
 		player->plane_y = player->old_plane_x * sin(player->root_speed) +
-			player->plane_y * cos(player->root_speed);
+		player->plane_y * cos(player->root_speed);
 		// redraw(raycaster, player);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/14 19:30:57 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/17 21:55:30 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int		main(void)
 {
 	t_data		data;
 	t_player	player;
-	// t_raycaster	raycaster;
+	t_raycaster	raycaster;
 
 	initialize_player(&player);
-	initialize_window(&data);
-	// initialize_raycaster(&player, &raycaster, &data);
+	initialize_window(&raycaster, &data, &player);
+	initialize_raycaster(&player, &raycaster, &data);
 	return (0);
 }
 

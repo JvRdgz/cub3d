@@ -6,37 +6,23 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/16 21:33:26 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/18 20:25:58 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void			initialize_window(t_data *data)
+void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player)
 {
 	data->mlx_ptr = mlx_init();
+	data->t_img.img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
+	init_draw(raycaster, player);
+	initialize_raycaster(player, raycaster, data);
+	// mlx_loop_hook(data->mlx_ptr, funcion, data);
 	mlx_loop(data->mlx_ptr);
 }
 
-void			choose_color(t_raycaster *raycaster, t_color *color)
-{
-	char	get_color;
-
-	get_color = raycaster->r_map[raycaster->map_x][raycaster->map_y];
-	if (get_color == '1')
-		color->color = 0x00FFFF;
-	else if (get_color == '2')
-		color->color = 0x0000FF;
-	else if (get_color == '3')
-		color->color = 0x9400D3;
-	else if (get_color == '4')
-		color->color = 0xFF8C00;
-	else if (get_color == '0')
-		color->color = 0x008080;
-	if (raycaster->side == 1)
-		color->color /= 2;
-}
 /*
 void          calc_wall_height(t_raycaster *rc)
 {
@@ -93,7 +79,7 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster)
 			raycaster->map_y += raycaster->step_y;
 			raycaster->side = 1;
 		}
-		raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
+		// raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
 		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] > 0)
 			raycaster->hit = 1;
 	}
@@ -126,6 +112,7 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 	i = 0;
 	while (i < SCREENWIDTH)
 	{
+		raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
 		raycaster->camera_x = 2 * i / (double)SCREENWIDTH - 1;
 		raycaster->ray_dir_x = player->dir_x + player->plane_x * raycaster->camera_x;
 		raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/14 18:57:57 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/17 22:35:50 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
-void			initialize_window(t_data *data);
+void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player);
 void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
 void			quit(char *str);
@@ -208,5 +208,6 @@ void			down_move(t_raycaster *raycaster, t_player *player);
 void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
 int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
+void			player(t_player *player);
 
 #endif
