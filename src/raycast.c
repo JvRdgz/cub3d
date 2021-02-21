@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/18 20:25:58 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/21 13:46:30 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player)
 {
+	t_img	*img;
+
 	data->mlx_ptr = mlx_init();
-	data->t_img.img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
+	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
+	img->addr = (int *)mlx_get_data_addr(img->img_ptr, img->bits_per_pixel, img->line_length, img->addr);
+	// load_img(data, raycaster);
 	init_draw(raycaster, player);
 	initialize_raycaster(player, raycaster, data);
 	// mlx_loop_hook(data->mlx_ptr, funcion, data);
 	mlx_loop(data->mlx_ptr);
+}
+
+void			load_img(t_data *data, t_raycaster *raycaster)
+{
+	char	*path;
+
+	path = "../img/wood.xpm";
+	raycaster->img = mlx_xpm_file_to_image(data->mlx_ptr, path, &raycaster->img_width, &raycaster->img_height);
 }
 
 /*

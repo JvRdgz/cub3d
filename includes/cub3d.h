@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/17 22:35:50 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/21 13:49:32 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,19 @@ typedef	struct	s_data
 {
 	void		*mlx_ptr;
 	void		*win;
-	struct		s_img
-	{
-		void	*img_ptr;
-		int		*addr;
-		int		bits_per_pixel;
-		int		line_length;
-		int		endian;
-	}			t_img;
 }				t_data;
+
+/*
+** Estructura para control de memoria de la imagen.
+*/
+typedef	struct	s_img
+{
+void			*img_ptr;
+char			*addr;
+int				bits_per_pixel;
+int				line_length;
+int				endian;
+}				t_img;
 
 typedef	struct	s_player
 {
@@ -171,6 +175,12 @@ typedef	struct	s_raycaster
 ** Variable para calcular el length total del gnl
 */
 	size_t		gnl_length;
+/*
+** Variables para el procesamiento de imagenes
+*/
+	void		*img;
+	int			img_width;
+	int			img_height;
 }				t_raycaster;
 /*
 ** Gestion de colores.
@@ -209,5 +219,6 @@ void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
 int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
 void			player(t_player *player);
+void			load_img(t_data *data, t_raycaster *raycaster);
 
 #endif
