@@ -4,3 +4,4 @@ a.out
 cub3d
 includes/*.h.gch
 raycaster-sdl
+mlx
