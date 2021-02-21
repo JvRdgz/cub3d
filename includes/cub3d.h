@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/21 13:49:32 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/21 21:18:04 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef	struct	s_data
 typedef	struct	s_img
 {
 void			*img_ptr;
-char			*addr;
+int				*addr;
 int				bits_per_pixel;
 int				line_length;
 int				endian;
@@ -101,16 +101,16 @@ typedef	struct	s_raycaster
 ** la pantalla del lado derecho de la pantalla = 1; centro = 0;
 ** izquierdo = -1
 */
-	double		camera_x;
-	double		camera_y;
-	double		ray_dir_x;
-	double		ray_dir_y;
+double		camera_x;
+double		camera_y;
+double		ray_dir_x;
+double		ray_dir_y;
 /*
 ** Variables del mapa que representan el cuadrado actual del mapa
 ** en el que se encuentra el rayo.
 */
-	int			map_x;
-	int			map_y;
+int			map_x;
+int			map_y;
 /*
 ** Distancia de recorrido del rayo. (raycasting)
 ** side_direct_x: distancia desde el comienzo del rayo hasta la
@@ -122,65 +122,72 @@ typedef	struct	s_raycaster
 ** delta_direct_y: distancia de la interseccion de Y hasta la
 **		siguiente interseccion de Y.
 */
-	double		side_dist_x;
-	double		side_dist_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
+double		side_dist_x;
+double		side_dist_y;
+double		delta_dist_x;
+double		delta_dist_y;
 /*
 ** Para calcular la longitud del rayo:
 */
-	double		perp_wall_dist;
+double		perp_wall_dist;
 /*
 ** Direccion del rayo para ver si los rayos se mueven en:
 ** + o - X o Y
 */
-	double		step_x;
-	double		step_y;
+double		step_x;
+double		step_y;
 /*
 ** Variable booleana para saber si el rayo ha golpeado la pared.
 */
-	double		hit;
+double		hit;
 /*
 ** Variable booleana para saber que lado es el golpeado.
 ** Si el lado golpeado es el de X, entonces side = 0
 ** Si el lado golpeado es el de Y, entonces side = 1.
 */
-	double		side;
+double		side;
 /*
 ** Variable del mapa para algoritmo DDA. Es de tipo int debido a que
 ** de esta forma nos permitira saber cuando estamos chocando contra una pared
 ** (1) o no (0).
 */
-	int			**world_map;
+int			**world_map;
 /*
 ** Variable para guardar el mapa leido.
 */
-	char		**r_map;
+char		**r_map;
 /*
 ** h es la altura en pixeles de la pantalla, para llevarlas a las
 ** coordenadas del pixel. Podemos multiplicar h por lo que sea para
 ** hacer las paredes mas altas.
 */
-	double		h;
+double		h;
 /*
 **  Para calcular la altura de la linea que se va a dibujar en la pantalla.
 */
-	double		line_heigth;
+double		line_heigth;
 /*
 ** Para calcular la altura mas alta y mas baja de la misma pared.
 */
-	double		draw_start;
-	double		draw_end;
+double		draw_start;
+double		draw_end;
 /*
 ** Variable para calcular el length total del gnl
 */
-	size_t		gnl_length;
+size_t		gnl_length;
 /*
 ** Variables para el procesamiento de imagenes
 */
-	void		*img;
-	int			img_width;
-	int			img_height;
+void		*img;
+int			img_width;
+int			img_height;
+/*
+** ¿?
+*/
+int			x;
+int			y;
+int			w;
+int			d;
 }				t_raycaster;
 /*
 ** Gestion de colores.
@@ -200,14 +207,14 @@ typedef	struct	s_color
 // 	int				**world_map;
 // }					t_map;
 int				map_aux();
-void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data);
-void			dda_algorithm(t_player *player, t_raycaster *raycaster);
-void			set_wall_dimensions(t_raycaster *raycaster);
+void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
+void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color);
+void			set_wall_dimensions(t_raycaster *raycaster, t_color *color);
 void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
-void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player);
+void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player, t_color *color, t_img *img);
 void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
 void			quit(char *str);
@@ -219,6 +226,6 @@ void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
 int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
 void			player(t_player *player);
-void			load_img(t_data *data, t_raycaster *raycaster);
+void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 
 #endif

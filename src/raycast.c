@@ -6,33 +6,32 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/21 13:46:30 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/21 21:17:49 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player)
+void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player, t_color *color, t_img *img)
 {
-	t_img	*img;
-
 	data->mlx_ptr = mlx_init();
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
-	img->addr = (int *)mlx_get_data_addr(img->img_ptr, img->bits_per_pixel, img->line_length, img->addr);
-	// load_img(data, raycaster);
+	load_img(data, raycaster, img);
+	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
-	initialize_raycaster(player, raycaster, data);
+	initialize_raycaster(player, raycaster, data, color);
+	mlx_put_image_to_window(data->mlx_ptr, data->win, img->img_ptr, 0, 0);
 	// mlx_loop_hook(data->mlx_ptr, funcion, data);
 	mlx_loop(data->mlx_ptr);
 }
 
-void			load_img(t_data *data, t_raycaster *raycaster)
+void			load_img(t_data *data, t_raycaster *raycaster, t_img *img)
 {
 	char	*path;
 
 	path = "../img/wood.xpm";
-	raycaster->img = mlx_xpm_file_to_image(data->mlx_ptr, path, &raycaster->img_width, &raycaster->img_height);
+	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->img_width), &(raycaster->img_height));
 }
 
 /*
@@ -75,7 +74,22 @@ void			draw_wall(t_data *data, t_raycaster *raycaster)
 		raycaster->perp_wall_dist = 
 }
 */
-void			dda_algorithm(t_player *player, t_raycaster *raycaster)
+
+void			set_wall_dimensions(t_raycaster *raycaster, t_color *color)
+{
+	raycaster->line_heigth = (int)(raycaster->h / raycaster->perp_wall_dist);
+	raycaster->draw_start = (((-1) * raycaster->line_heigth) / 2) + (raycaster->h / 2);
+	if (raycaster->draw_start < 0)
+		raycaster->draw_start = 0;
+	raycaster->draw_end = (raycaster->line_heigth / 2) + (raycaster->h / 2);
+	if (raycaster->draw_end >= raycaster->h)
+		raycaster->draw_end = raycaster->h - 1;
+	choose_color(raycaster, color);
+	if (raycaster->side == 1)
+		color->color = color->color / 2;
+}
+
+void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 {
 	while (raycaster->hit == 0)
 	{
@@ -102,20 +116,10 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster)
 		raycaster->perp_wall_dist = (raycaster->map_x - player->pos_x + (1 - raycaster->step_x) / 2) / raycaster->ray_dir_x;
 	else
 		raycaster->perp_wall_dist = (raycaster->map_y - player->pos_y + (1 - raycaster->step_y) / 2) / raycaster->ray_dir_y;
+	set_wall_dimensions(raycaster, color);
 }
 
-void			set_wall_dimensions(t_raycaster *raycaster)
-{
-	raycaster->line_heigth = (int)(raycaster->h / raycaster->perp_wall_dist);
-	raycaster->draw_start = (((-1) * raycaster->line_heigth) / 2) + (raycaster->h / 2);
-	if (raycaster->draw_start < 0)
-		raycaster->draw_start = 0;
-	raycaster->draw_end = (raycaster->line_heigth / 2) + (raycaster->h / 2);
-	if (raycaster->draw_end >= raycaster->h)
-		raycaster->draw_end = raycaster->h - 1;
-}
-
-void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data)
+void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color)
 {
 	int			i;
 /*
@@ -150,7 +154,7 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 			raycaster->step_y = 1;
 			raycaster->side_dist_y = raycaster->delta_dist_y * ((raycaster->map_y + 1) - player->pos_y);
 		}
-		dda_algorithm(player, raycaster);
+		dda_algorithm(player, raycaster, color);
 		i++;
 	}
 }
