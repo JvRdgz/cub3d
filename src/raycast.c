@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/21 21:17:49 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:37:27 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player, t_color *color, t_img *img)
 {
+	char	*path;
+
+	path = "../img/wood.xpm";
 	data->mlx_ptr = mlx_init();
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
-	load_img(data, raycaster, img);
+	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->img_width), &(raycaster->img_height));
+	// load_img(data, raycaster, img);
 	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
 	initialize_raycaster(player, raycaster, data, color);
@@ -26,6 +30,7 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	mlx_loop(data->mlx_ptr);
 }
 
+/*
 void			load_img(t_data *data, t_raycaster *raycaster, t_img *img)
 {
 	char	*path;
@@ -33,6 +38,7 @@ void			load_img(t_data *data, t_raycaster *raycaster, t_img *img)
 	path = "../img/wood.xpm";
 	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->img_width), &(raycaster->img_height));
 }
+*/
 
 /*
 void          calc_wall_height(t_raycaster *rc)
@@ -106,7 +112,8 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 			raycaster->side = 1;
 		}
 		// raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
-		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] > 0)
+		// if (raycaster->world_map[raycaster->map_x][raycaster->map_y] > 0)
+		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] != '0')
 			raycaster->hit = 1;
 	}
 /*
@@ -128,7 +135,8 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 	i = 0;
 	while (i < SCREENWIDTH)
 	{
-		raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
+		// raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
+		raycaster->world_map[raycaster->map_x][raycaster->map_y];
 		raycaster->camera_x = 2 * i / (double)SCREENWIDTH - 1;
 		raycaster->ray_dir_x = player->dir_x + player->plane_x * raycaster->camera_x;
 		raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/21 21:18:16 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:44:50 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		main(void)
 	t_img		img;
 
 	initialize_player(&player);
+	map_aux_hardcoded(&raycaster);
 	initialize_window(&raycaster, &data, &player, &color, &img);
 	// initialize_raycaster(&player, &raycaster, &data);
 	return (0);

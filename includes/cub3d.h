@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/21 21:18:04 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/25 21:44:43 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ double		side;
 ** de esta forma nos permitira saber cuando estamos chocando contra una pared
 ** (1) o no (0).
 */
-int			**world_map;
+char		*world_map[MAPHEIGTH];
 /*
 ** Variable para guardar el mapa leido.
 */
@@ -206,11 +206,13 @@ typedef	struct	s_color
 // */
 // 	int				**world_map;
 // }					t_map;
-int				map_aux();
+// int				map_aux();
+
+void			map_aux_hardcoded(t_raycaster *raycaster);
 void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
 void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color);
 void			set_wall_dimensions(t_raycaster *raycaster, t_color *color);
-void			read_file(t_raycaster *raycaster, char **argv);
+// void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
@@ -226,6 +228,6 @@ void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
 int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
 void			player(t_player *player);
-void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
+// void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 
 #endif

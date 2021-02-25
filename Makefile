@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/17 22:21:52 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/02/25 21:33:12 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC		=	./src/color.c\
 			./src/movement.c\
 			./src/player.c\
 			./src/raycast.c\
-			./src/read.c\
 			./utils/get_next_line_utils_bonus.c\
 			./utils/mlx_utilities.c\
 
