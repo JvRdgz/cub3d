@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 12:15:35 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:39:48 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,12 +157,6 @@ char		*world_map[MAPHEIGTH];
 */
 char		**r_map;
 /*
-** h es la altura en pixeles de la pantalla, para llevarlas a las
-** coordenadas del pixel. Podemos multiplicar h por lo que sea para
-** hacer las paredes mas altas.
-*/
-double		h;
-/*
 **  Para calcular la altura de la linea que se va a dibujar en la pantalla.
 */
 double		line_heigth;
@@ -179,14 +173,18 @@ size_t		gnl_length;
 ** Variables para el procesamiento de imagenes
 */
 void		*img;
-int			img_width;
-int			img_height;
+/*
+** h es la altura en pixeles de la pantalla, para llevarlas a las
+** coordenadas del pixel. Podemos multiplicar h por lo que sea para
+** hacer las paredes mas altas.
+*/
+int			h;
+int			w;
 /*
 ** ¿?
 */
 int			x;
 int			y;
-int			w;
 int			d;
 }				t_raycaster;
 /*
@@ -217,7 +215,7 @@ void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
 void			read_map(t_raycaster *raycaster, int *fd, char *line);
 void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player, t_color *color, t_img *img);
-void			initialize_player(t_player *player);
+// void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
 void			quit(char *str);
 void			choose_color(t_raycaster *raycaster, t_color *color);
@@ -227,7 +225,10 @@ void			down_move(t_raycaster *raycaster, t_player *player);
 void			left_move(t_raycaster *raycaster, t_player *player);
 void			right_move(t_raycaster *raycaster, t_player *player);
 int				key_hooks(int key, t_raycaster *raycaster, t_player *player);
-void			player(t_player *player);
+void			init_player(t_player *player);
+int				repeat(t_data *data);
+int				v_movement(int key, t_raycaster *raycaster, t_player *player);
+int				v_movement_toggle(int key, t_raycaster *raycaster, t_player *player);
 // void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 
 #endif

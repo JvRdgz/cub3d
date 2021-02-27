@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 12:14:35 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:44:05 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	char	*path;
 
 	path = "../img/wood.xpm";
+	raycaster->x = -1;
 	data->mlx_ptr = mlx_init();
-	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
-	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->img_width), &(raycaster->img_height));
+	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
+	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
 	// load_img(data, raycaster, img);
 	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
-	initialize_raycaster(player, raycaster, data, color);
+	while (++raycaster->x < raycaster->w)
+		initialize_raycaster(player, raycaster, data, color);
 	mlx_put_image_to_window(data->mlx_ptr, data->win, img->img_ptr, 0, 0);
-	// mlx_loop_hook(data->mlx_ptr, funcion, data);
+	init_player(player);
+	mlx_loop_hook(data->mlx_ptr, repeat, data);
 	mlx_loop(data->mlx_ptr);
 }
 
@@ -58,19 +61,6 @@ void          calc_wall_height(t_raycaster *rc)
     rc->draw_end = WIN_Y - 1;
 }
 */
-
-void			init_draw(t_raycaster *raycaster, t_player *player)
-{
-	player->pos_x = 6;
-	player->pos_y = 8;
-	player->dir_x = -1;
-	player->dir_y = 0;
-	player->plane_x = 0;
-	player->plane_y = 0.66;
-	player->time = 0;
-	player->oldtime = 0;
-	player->speed = .2;
-}
 /*
 void			draw_wall(t_data *data, t_raycaster *raycaster)
 {
@@ -136,10 +126,12 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 	while (i < SCREENWIDTH)
 	{
 		// raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
-		raycaster->world_map[raycaster->map_x][raycaster->map_y];
-		raycaster->camera_x = 2 * i / (double)SCREENWIDTH - 1;
+		// raycaster->world_map[raycaster->map_x][raycaster->map_y];
+		raycaster->camera_x = 2 * i / (double)raycaster->w - 1;
 		raycaster->ray_dir_x = player->dir_x + player->plane_x * raycaster->camera_x;
 		raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;
+		raycaster->map_x = (int)player->pos_x;
+		raycaster->map_y = (int)player->pos_y;
 		raycaster->delta_dist_x = abs(1 / raycaster->ray_dir_x);
 		raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
 		if (raycaster->ray_dir_x < 0)

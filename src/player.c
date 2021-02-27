@@ -6,12 +6,12 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 20:31:56 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/17 22:35:29 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:26:20 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/*
 void	initialize_player(t_player *player)
 {
 	player->pos_x = 22;
@@ -23,8 +23,8 @@ void	initialize_player(t_player *player)
 	player->time = 0;
 	player->oldtime = 0;
 }
-
-void	player(t_player *player)
+*/
+void	init_player(t_player *player)
 {
 	int		num;
 
