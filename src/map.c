@@ -6,15 +6,15 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 20:19:39 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 18:06:25 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/03 21:36:48 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-/*
-int		map_aux()
+
+void	map_aux(t_raycaster *raycaster)
 {
-	int	worldMap[MAPWIDTH][MAPHEIGTH]=
+	int		map[MAPWIDTH][MAPHEIGTH]=
 	{
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -40,10 +40,19 @@ int		map_aux()
 		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-		};
-		return(worldMap[MAPWIDTH][MAPHEIGTH]);
+	};
+	raycaster->world_map[MAPWIDTH][MAPHEIGTH] = map[MAPWIDTH][MAPHEIGTH];
+	for (int i = 0; i < 24; i++)
+	{
+		for (int j = 0; j < 24; j++)
+		{
+			printf("[%d]", raycaster->world_map[i][j]);
+		}
+		printf("\n");
+	}
 }
-*/
+
+/*
 void	map_aux_hardcoded(t_raycaster *raycaster)
 {
 	raycaster->world_map[0] = "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
@@ -71,3 +80,4 @@ void	map_aux_hardcoded(t_raycaster *raycaster)
 	raycaster->world_map[22] = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1";
 	raycaster->world_map[23] = "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 18:39:48 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/03 21:36:41 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,8 @@ double		side;
 ** de esta forma nos permitira saber cuando estamos chocando contra una pared
 ** (1) o no (0).
 */
-char		*world_map[MAPHEIGTH];
+// char		*world_map[MAPHEIGTH];
+int			world_map[MAPHEIGTH][MAPWIDTH];
 /*
 ** Variable para guardar el mapa leido.
 */
@@ -206,7 +207,8 @@ typedef	struct	s_color
 // }					t_map;
 // int				map_aux();
 
-void			map_aux_hardcoded(t_raycaster *raycaster);
+// void			map_aux_hardcoded(t_raycaster *raycaster);
+void			map_aux(t_raycaster *raycaster);
 void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
 void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color);
 void			set_wall_dimensions(t_raycaster *raycaster, t_color *color);

@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:41:57 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 17:56:01 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/03 21:33:34 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int		main(void)
 	t_color		color;
 	t_img		img;
 
-	map_aux_hardcoded(&raycaster);
+	// map_aux_hardcoded(&raycaster);
+	map_aux(&raycaster);
 	// initialize_player(&player);
-	initialize_window(&raycaster, &data, &player, &color, &img);
+	// initialize_window(&raycaster, &data, &player, &color, &img);
 	// initialize_raycaster(&player, &raycaster, &data);
 	return (0);
 }
