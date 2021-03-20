@@ -6,13 +6,13 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 20:19:39 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/03/03 21:36:48 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/14 20:49:26 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	map_aux(t_raycaster *raycaster)
+int	map_aux()
 {
 	int		map[MAPWIDTH][MAPHEIGTH]=
 	{
@@ -41,15 +41,8 @@ void	map_aux(t_raycaster *raycaster)
 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
-	raycaster->world_map[MAPWIDTH][MAPHEIGTH] = map[MAPWIDTH][MAPHEIGTH];
-	for (int i = 0; i < 24; i++)
-	{
-		for (int j = 0; j < 24; j++)
-		{
-			printf("[%d]", raycaster->world_map[i][j]);
-		}
-		printf("\n");
-	}
+
+	return	(map[MAPWIDTH][MAPHEIGTH]);
 }
 
 /*

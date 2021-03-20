@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/03/03 21:36:41 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/14 20:49:24 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Coger la resolucion del archivo del mapa con el gnl
 */
 # define SCREENWIDTH 640
-# define SCREENHEIGTH 480
+# define SCREENHEIGHT 480
 # include <mlx.h>
 # include "../libft/libft.h"
 // # include "../mlx/minilibx-linux/mlx.h"
@@ -208,7 +208,7 @@ typedef	struct	s_color
 // int				map_aux();
 
 // void			map_aux_hardcoded(t_raycaster *raycaster);
-void			map_aux(t_raycaster *raycaster);
+int			map_aux();
 void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
 void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color);
 void			set_wall_dimensions(t_raycaster *raycaster, t_color *color);
@@ -220,7 +220,7 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 // void			initialize_player(t_player *player);
 int				destroy_win(t_data *data);
 void			quit(char *str);
-void			choose_color(t_raycaster *raycaster, t_color *color);
+int			choose_color(t_raycaster *raycaster, t_color *color);
 void			init_draw(t_raycaster *raycaster, t_player *player);
 void			up_move(t_raycaster *raycaster, t_player *player);
 void			down_move(t_raycaster *raycaster, t_player *player);

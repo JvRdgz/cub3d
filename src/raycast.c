@@ -19,8 +19,8 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	path = "../img/wood.xpm";
 	raycaster->x = -1;
 	data->mlx_ptr = mlx_init();
-	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH);
-	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGTH, "cub3d");
+	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
+	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
 	// load_img(data, raycaster, img);
 	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
@@ -132,8 +132,10 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 		raycaster->ray_dir_y = player->dir_y + player->plane_y * raycaster->camera_y;
 		raycaster->map_x = (int)player->pos_x;
 		raycaster->map_y = (int)player->pos_y;
-		raycaster->delta_dist_x = abs(1 / raycaster->ray_dir_x);
-		raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
+		// raycaster->delta_dist_x = abs(1 / raycaster->ray_dir_x);
+		// raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
+		raycaster->delta_dist_x = sqrt(1 + pow(raycaster->ray_dir_y, 2) / pow(raycaster->ray_dir_x, 2));
+		raycaster->delta_dist_y = sqrt(1 + pow(raycaster->ray_dir_x, 2) / pow(raycaster->ray_dir_y, 2));
 		if (raycaster->ray_dir_x < 0)
 		{
 			raycaster->step_x = -1;
@@ -142,17 +144,19 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 		else
 		{
 			raycaster->step_x = 1;
-			raycaster->side_dist_x = raycaster->delta_dist_x * ((raycaster->map_x + 1) - player->pos_x);
+			// raycaster->side_dist_x = raycaster->delta_dist_x * ((raycaster->map_x + 1) - player->pos_x);
+			raycaster->side_dist_x = (raycaster->map_x + 1.0 - player->pos_x) * raycaster->delta_dist_x;
 		}
-		if (raycaster->ray_dir_y)
+		if (raycaster->ray_dir_y < 0)
 		{
 			raycaster->step_y = -1;
-			raycaster->side_dist_y = raycaster->delta_dist_y * (player->pos_y - raycaster->map_y);
+			raycaster->side_dist_y = raycaster->delta_dist_y * (player->pos_y - raycaster->map_y);	
 		}
 		else
 		{
 			raycaster->step_y = 1;
-			raycaster->side_dist_y = raycaster->delta_dist_y * ((raycaster->map_y + 1) - player->pos_y);
+			// raycaster->side_dist_y = raycaster->delta_dist_y * ((raycaster->map_y + 1) - player->pos_y);
+			raycaster->side_dist_y = (raycaster->map_y + 1.0 - player->pos_y) * raycaster->delta_dist_y;
 		}
 		dda_algorithm(player, raycaster, color);
 		i++;

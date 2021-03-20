@@ -21,9 +21,9 @@ int		main(void)
 	t_img		img;
 
 	// map_aux_hardcoded(&raycaster);
-	map_aux(&raycaster);
+	// map_aux(&raycaster);
 	// initialize_player(&player);
-	// initialize_window(&raycaster, &data, &player, &color, &img);
+	initialize_window(&raycaster, &data, &player, &color, &img);
 	// initialize_raycaster(&player, &raycaster, &data);
 	return (0);
 }

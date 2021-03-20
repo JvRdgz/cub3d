@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 20:50:50 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/27 18:44:14 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/03/14 19:35:51 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_draw(t_raycaster *raycaster, t_player *player)
 	player->time = 0;
 	player->oldtime = 0;
 	raycaster->w = SCREENWIDTH;
-	raycaster->h = SCREENHEIGTH;
+	raycaster->h = SCREENHEIGHT;
 	player->up = 0;
 	player->down = 0;
 	player->right = 0;
