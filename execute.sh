@@ -4,5 +4,7 @@
 #	./src/raycast.c ./src/read.c ./utils/get_nest_line_utils_bonus.c \
 #	-lbsd -lmlx -lXext -lX11 && ./a.out ./maps/elpepe.txt
 
-gcc ./src/*.c ./utils/*.c ./includes/cub3d.h \
-	-lmlx -lXext -lX11 && ./a.out && rm -rf ./includes/*.gch
+# gcc ./src/*.c ./utils/*.c ./includes/cub3d.h \
+#	-lmlx -lXext -lX11 && ./a.out && rm -rf ./includes/*.gch
+
+make re && ./cub3d
