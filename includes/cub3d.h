@@ -44,7 +44,7 @@ typedef	struct	s_data
 typedef	struct	s_img
 {
 void			*img_ptr;
-int				*addr;
+char				*addr;
 int				bits_per_pixel;
 int				line_length;
 int				endian;

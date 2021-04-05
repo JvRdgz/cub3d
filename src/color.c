@@ -30,5 +30,7 @@ int	choose_color(t_raycaster *raycaster, t_color *color)
 		color->color = 0x008080;
 	if (raycaster->side == 1)
 		color->color /= 2;
+	// printf("Color: %d", get_color);
+	// printf("color->color: %d", color->color);
 	return (color->color);
 }

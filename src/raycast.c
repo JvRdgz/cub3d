@@ -14,23 +14,23 @@
 
 void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player, t_color *color, t_img *img)
 {
-	char	*path;
+	// char	*path;
 
-	path = "../img/wood.xpm";
+	// path = "../img/wood.xpm";
 	raycaster->x = -1;
 	data->mlx_ptr = mlx_init();
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT, "cub3d");
-	img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
+	// img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
 	// load_img(data, raycaster, img);
-	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
-	printf("\nFFF\n");
+	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
 	while (++raycaster->x < raycaster->w)
 		initialize_raycaster(player, raycaster, data, color);
 	mlx_put_image_to_window(data->mlx_ptr, data->win, img->img_ptr, 0, 0);
 	init_player(player);
 	mlx_loop_hook(data->mlx_ptr, repeat, data);
+	// printf("\nFFF\n");
 	mlx_loop(data->mlx_ptr);
 }
 
@@ -92,12 +92,14 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 	{
 		if (raycaster->side_dist_x < raycaster->side_dist_y)
 		{
+			printf("1");
 			raycaster->side_dist_x += raycaster->delta_dist_x;
 			raycaster->map_x += raycaster->step_x;
 			raycaster->side = 0;
 		}
 		else
 		{
+			printf("2");
 			raycaster->side_dist_y += raycaster->delta_dist_y;
 			raycaster->map_y += raycaster->step_y;
 			raycaster->side = 1;
@@ -105,15 +107,25 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 		// raycaster->world_map[raycaster->map_x][raycaster->map_y] = map_aux();
 		// if (raycaster->world_map[raycaster->map_x][raycaster->map_y] > 0)
 		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] != '0')
+		{
 			raycaster->hit = 1;
+			printf("3");
+		}
 	}
 /*
 ** Calcula la distancia proyectada desde la direccion de la camara.
 */
 	if (raycaster->side == 0)
+	{
+		printf("4");
 		raycaster->perp_wall_dist = (raycaster->map_x - player->pos_x + (1 - raycaster->step_x) / 2) / raycaster->ray_dir_x;
+		// printf("perp_wall_dist: %f", raycaster->perp_wall_dist);
+	}
 	else
+	{
+		printf("5");
 		raycaster->perp_wall_dist = (raycaster->map_y - player->pos_y + (1 - raycaster->step_y) / 2) / raycaster->ray_dir_y;
+	}
 	set_wall_dimensions(raycaster, color);
 }
 
@@ -137,6 +149,7 @@ void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *da
 		// raycaster->delta_dist_y = abs(1 / raycaster->ray_dir_y);
 		raycaster->delta_dist_x = sqrt(1 + pow(raycaster->ray_dir_y, 2) / pow(raycaster->ray_dir_x, 2));
 		raycaster->delta_dist_y = sqrt(1 + pow(raycaster->ray_dir_x, 2) / pow(raycaster->ray_dir_y, 2));
+		// printf("HOLA");
 		if (raycaster->ray_dir_x < 0)
 		{
 			raycaster->step_x = -1;
