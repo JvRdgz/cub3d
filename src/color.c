@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/31 18:38:12 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/17 22:29:35 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/04/07 20:19:19 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	choose_color(t_raycaster *raycaster, t_color *color)
 	if (raycaster->side == 1)
 		color->color /= 2;
 	// printf("Color: %d", get_color);
-	// printf("color->color: %d", color->color);
+	printf("\ncolor->color: %d", color->color);
 	return (color->color);
 }

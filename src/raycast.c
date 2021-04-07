@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/09 18:04:27 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/03/03 21:17:22 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/04/07 20:16:22 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 	// img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
+	// img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "../img/wood.xpm", &(raycaster->w), &(raycaster->h));
 	// load_img(data, raycaster, img);
 	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
@@ -75,12 +76,19 @@ void			draw_wall(t_data *data, t_raycaster *raycaster)
 void			set_wall_dimensions(t_raycaster *raycaster, t_color *color)
 {
 	raycaster->line_heigth = (int)(raycaster->h / raycaster->perp_wall_dist);
+	// printf("\nwallDimension");
 	raycaster->draw_start = (((-1) * raycaster->line_heigth) / 2) + (raycaster->h / 2);
 	if (raycaster->draw_start < 0)
+	{
 		raycaster->draw_start = 0;
+		printf("\nraycaster->draw_start < 0");
+	}
 	raycaster->draw_end = (raycaster->line_heigth / 2) + (raycaster->h / 2);
 	if (raycaster->draw_end >= raycaster->h)
+	{
 		raycaster->draw_end = raycaster->h - 1;
+		printf("\nraycaster->draw_end >= raycaster->h");
+	}
 	choose_color(raycaster, color);
 	if (raycaster->side == 1)
 		color->color = color->color / 2;
