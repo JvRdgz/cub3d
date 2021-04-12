@@ -14,8 +14,8 @@
 
 void	init_draw(t_raycaster *raycaster, t_player *player)
 {
-	player->pos_x = 6;
-	player->pos_y = 8;
+	player->pos_x = 22;
+	player->pos_y = 12;
 	player->dir_x = -1;
 	player->dir_y = 0;
 	player->plane_x = 0;

@@ -88,6 +88,7 @@ void	left_move(t_raycaster *raycaster, t_player *player)
 
 int		key_hooks(int key, t_raycaster *raycaster, t_player *player)
 {
+	printf("\nHOLA");
 	if (key == ESC)
 		quit("Closing...");
 	else if (key == UP)

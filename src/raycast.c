@@ -26,8 +26,14 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	// load_img(data, raycaster, img);
 	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
-	while (++raycaster->x < raycaster->w)
+	while (raycaster->x < raycaster->w)
+	{
 		initialize_raycaster(player, raycaster, data, color);
+		raycaster->x++;
+		// printf("\nraycaster->x: %d", raycaster->x);
+		// printf("\nraycaster->w: %d", raycaster->w);
+	}
+	printf("HOLA");
 	mlx_put_image_to_window(data->mlx_ptr, data->win, img->img_ptr, 0, 0);
 	init_player(player);
 	mlx_loop_hook(data->mlx_ptr, repeat, data);
@@ -81,13 +87,13 @@ void			set_wall_dimensions(t_raycaster *raycaster, t_color *color)
 	if (raycaster->draw_start < 0)
 	{
 		raycaster->draw_start = 0;
-		printf("\nraycaster->draw_start < 0");
+		// printf("\nraycaster->draw_start < 0");
 	}
 	raycaster->draw_end = (raycaster->line_heigth / 2) + (raycaster->h / 2);
 	if (raycaster->draw_end >= raycaster->h)
 	{
 		raycaster->draw_end = raycaster->h - 1;
-		printf("\nraycaster->draw_end >= raycaster->h");
+		// printf("\nraycaster->draw_end >= raycaster->h");
 	}
 	choose_color(raycaster, color);
 	if (raycaster->side == 1)
@@ -100,14 +106,14 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 	{
 		if (raycaster->side_dist_x < raycaster->side_dist_y)
 		{
-			printf("1");
+			// printf("1");
 			raycaster->side_dist_x += raycaster->delta_dist_x;
 			raycaster->map_x += raycaster->step_x;
 			raycaster->side = 0;
 		}
 		else
 		{
-			printf("2");
+			// printf("2");
 			raycaster->side_dist_y += raycaster->delta_dist_y;
 			raycaster->map_y += raycaster->step_y;
 			raycaster->side = 1;
@@ -117,7 +123,7 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 		if (raycaster->world_map[raycaster->map_x][raycaster->map_y] != '0')
 		{
 			raycaster->hit = 1;
-			printf("3");
+			// printf("3");
 		}
 	}
 /*
@@ -125,13 +131,13 @@ void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color)
 */
 	if (raycaster->side == 0)
 	{
-		printf("4");
+		// printf("4");
 		raycaster->perp_wall_dist = (raycaster->map_x - player->pos_x + (1 - raycaster->step_x) / 2) / raycaster->ray_dir_x;
 		// printf("perp_wall_dist: %f", raycaster->perp_wall_dist);
 	}
 	else
 	{
-		printf("5");
+		// printf("5");
 		raycaster->perp_wall_dist = (raycaster->map_y - player->pos_y + (1 - raycaster->step_y) / 2) / raycaster->ray_dir_y;
 	}
 	set_wall_dimensions(raycaster, color);

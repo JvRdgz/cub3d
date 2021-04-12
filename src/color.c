@@ -18,6 +18,9 @@ int	choose_color(t_raycaster *raycaster, t_color *color)
 
 	// get_color = raycaster->r_map[raycaster->map_x][raycaster->map_y];
 	get_color = raycaster->world_map[raycaster->map_x][raycaster->map_y];
+	// printf("\nget_color: %d", get_color);
+	// printf("\nget_color: %c", (char)get_color);
+	// printf("\ncolor->color: %d", color->color);
 	if (get_color == 1)
 		color->color = 0x00FFFF;
 	else if (get_color == 2)
@@ -26,11 +29,11 @@ int	choose_color(t_raycaster *raycaster, t_color *color)
 		color->color = 0x9400D3;
 	else if (get_color == 4)
 		color->color = 0xFF8C00;
-	else if (get_color == 0)
+	else if (get_color == 0) 
 		color->color = 0x008080;
 	if (raycaster->side == 1)
 		color->color /= 2;
 	// printf("Color: %d", get_color);
-	printf("\ncolor->color: %d", color->color);
+	// printf("\ncolor->color: %d", color->color);
 	return (color->color);
 }
