@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:36:00 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/03/14 20:49:24 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/04/20 20:55:09 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef	struct	s_data
 typedef	struct	s_img
 {
 void			*img_ptr;
-char				*addr;
+// char				*addr;
+int				*addr;
 int				bits_per_pixel;
 int				line_length;
 int				endian;
@@ -211,7 +212,7 @@ typedef	struct	s_color
 int			map_aux();
 void			initialize_raycaster(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
 void			dda_algorithm(t_player *player, t_raycaster *raycaster, t_color *color);
-void			set_wall_dimensions(t_raycaster *raycaster, t_color *color);
+void			set_wall_dimensions(t_raycaster *raycaster, t_player *player, t_color *color);
 // void			read_file(t_raycaster *raycaster, char **argv);
 void			memory_allocation(t_raycaster *raycaster, char *line);
 size_t			gnl_size(char *line);
@@ -231,6 +232,7 @@ void			init_player(t_player *player);
 int				repeat(t_data *data);
 int				v_movement(int key, t_raycaster *raycaster, t_player *player);
 int				v_movement_toggle(int key, t_raycaster *raycaster, t_player *player);
+void			raycasting_control(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
 // void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 
 #endif
