@@ -94,6 +94,15 @@ typedef	struct	s_player
 	int			right;
 }				t_player;
 
+typedef struct	s_sprite
+{
+	int			id;
+	double			x;
+	double			y;
+	double			dist;
+	t_img			text;
+}				t_sprite
+
 typedef	struct	s_raycaster
 {
 /*
@@ -188,6 +197,15 @@ int			w;
 int			x;
 int			y;
 int			d;
+
+/*
+** SPRITES
+*/
+
+int			sprites_count;
+int			num_sprites;
+int			sprites_buffer;
+t_sprite		*sprite;
 }				t_raycaster;
 /*
 ** Gestion de colores.

@@ -28,7 +28,10 @@ void	init_draw(t_raycaster *raycaster, t_player *player)
 	player->down = 0;
 	player->right = 0;
 	player->left = 0;
-	player->speed = .2;
+	player->speed = 0.060;
+	raycaster->sprites_count = raycaster->num_sprites;
+	raycaster->sprite = ft_calloc(sizeof(t_sprite) * raycaster->num_sprites, 1);
+	raycaster->sprites_buffer = (double *)malloc(sizeof(double) * SCREENWIDTH);
 }
 
 int		v_movement_toggle(int key, t_raycaster *raycaster, t_player *player)

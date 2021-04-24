@@ -17,7 +17,9 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	// char	*path;
 
 	// path = "../img/wood.xpm";
-	raycaster->x = -1;
+	raycaster->x = 0;
+	if (raycaster->img)
+		mlx_destroy_image(data->mlx_ptr, raycaster->img);
 	data->mlx_ptr = mlx_init();
 	img->img_ptr = mlx_new_image(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	data->win = mlx_new_window(data->mlx_ptr, SCREENWIDTH, SCREENHEIGHT, "cub3d");
