@@ -100,6 +100,10 @@ typedef struct	s_sprite
 	double			x;
 	double			y;
 	double			dist;
+	int			save_bpm;
+	int			sprites_count;
+	int			num_sprites;
+	double			*sprites_buffer
 	t_img			text;
 }				t_sprite
 
@@ -199,12 +203,22 @@ int			y;
 int			d;
 
 /*
+** Techo y suelo
+*/
+unsigned	long	ceil;
+unsigned	long	floor;
+
+/*
+** Filas y columnas
+*/
+int			map_lines;
+int			map_rows;
+
+int			save;
+
+/*
 ** SPRITES
 */
-
-int			sprites_count;
-int			num_sprites;
-int			sprites_buffer;
 t_sprite		*sprite;
 }				t_raycaster;
 /*
@@ -251,6 +265,7 @@ int				repeat(t_data *data);
 int				v_movement(int key, t_raycaster *raycaster, t_player *player);
 int				v_movement_toggle(int key, t_raycaster *raycaster, t_player *player);
 void			raycasting_control(t_player *player, t_raycaster *raycaster, t_data *data, t_color *color);
+void			init_ray_params(t_raycaster *raycaster, t_data *data, t_player *player);
 // void			load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 
 #endif
