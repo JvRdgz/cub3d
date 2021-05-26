@@ -6,12 +6,12 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 20:50:50 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/03/14 19:35:51 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/05/26 22:40:09 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/*
 void	init_draw(t_raycaster *raycaster, t_player *player)
 {
 	player->pos_x = 22;
@@ -29,11 +29,11 @@ void	init_draw(t_raycaster *raycaster, t_player *player)
 	player->right = 0;
 	player->left = 0;
 	player->speed = 0.060;
-	raycaster->sprites_count = raycaster->num_sprites;
-	raycaster->sprite = ft_calloc(sizeof(t_sprite) * raycaster->num_sprites, 1);
-	raycaster->sprites_buffer = (double *)malloc(sizeof(double) * SCREENWIDTH);
+	// raycaster->sprites_count = raycaster->num_sprites;
+	// raycaster->sprite = ft_calloc(sizeof(t_sprite) * raycaster->num_sprites, 1);
+	// raycaster->sprites_buffer = (double *)malloc(sizeof(double) * SCREENWIDTH);
 }
-
+*/
 int		v_movement_toggle(int key, t_raycaster *raycaster, t_player *player)
 {
 	if (key == UP)

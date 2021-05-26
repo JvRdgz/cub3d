@@ -5,3 +5,4 @@ cub3d
 includes/*.h.gch
 raycaster-sdl
 mlx
+.DS_Store
