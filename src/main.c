@@ -11,14 +11,20 @@
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include <stdio.h>
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_data		data;
 	t_player	player;
 	t_raycaster	raycaster;
 	t_color		color;
 	t_img		img;
+
+	if (argc < 2 || argc > 3)
+	{
+		printf("Numero de argumentos erroneo");
+	}
 
 	// map_aux_hardcoded(&raycaster);
 	// map_aux(&raycaster);
