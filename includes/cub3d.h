@@ -206,8 +206,10 @@ typedef	struct			s_raycaster
 /*
 ** Techo y suelo
 */
-	unsigned	long	ceil;
-	unsigned	long	floor;
+	int					ceil[3];
+	int					floor[3];
+	unsigned	long			hexaceil;
+	unsigned	long			hexafloor;
 
 /*
 ** Filas y columnas
@@ -240,6 +242,19 @@ typedef	struct			s_raycaster
  ** Instanciacion de img
 */
 	t_img				text[12];
+/*
+** Variables para el procesamiento de datos.
+*/
+	int					flag;
+	int					flag_path;
+	char					*no;
+	char					*so;
+	char					*ea;
+	char					*we;
+	char					*s;
+	int					i;
+	int					wall_left_right;
+	int					wall_up_down;
 }						t_raycaster;
 /*
 ** Gestion de colores.
@@ -250,11 +265,6 @@ typedef	struct			s_color
 	int					x_color;
 	int					y_color;
 }						t_color;
-
-typedef struct			s_config
-{
-// Lo necesario del data_processor
-}				t_config;
 
 // typedef	struct		s_map
 // {
@@ -294,6 +304,6 @@ void					init_ray_params(t_raycaster *raycaster, t_data *data, t_player *player)
 // void					load_img(t_data *data, t_raycaster *raycaster, t_img *img);
 void					init_pos_player_ns(t_raycaster *raycaster, t_data *data, t_player *player);
 void					init_pos_player_ew(t_raycaster *raycaster, t_data *data, t_player *player);
-void					drifting_r_path(char *line, t_ra);
+void					drifting_r_path(char *line, t_raycaster *raycaster);
 
 #endif
