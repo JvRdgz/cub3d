@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utilities.c                                    :+:      :+:    :+:   */
+/*   create_and_clean.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 22:02:14 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/02/03 22:14:31 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/12/15 13:08:05 by agutierr          #+#    #+#             */
+/*   Updated: 2021/07/18 12:43:58 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <mlx.h>
+#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
-/*
-** Para salir con un mensaje.
-*/
-
-void	quit(char *str)
+int		exit_game(t_mlx *mlx)
 {
-	ft_putendl_fd(str, 1);
-	exit(0);
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	free(mlx->ptr);
+	exit(-1);
+	return (0);
 }
 
-/*
-** Destruye la ventana.
-*/
-int		destroy_win(t_data *data)
+int		close_win(int keycode, t_mlx *mlx)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win);
-	ft_putendl_fd("Closing...", 1);
-	quit("Closing");
+	if (keycode == KEY_ESC)
+		exit_game(mlx);
 	return (0);
 }

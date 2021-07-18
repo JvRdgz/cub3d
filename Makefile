@@ -6,22 +6,40 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/02/27 17:57:33 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/07/18 15:00:24 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	cub3d
 
-SRC		=	./src/color.c\
-			./src/draw.c\
-			./src/get_next_line_bonus.c\
-			./src/main.c\
-			./src/map.c\
-			./src/movement.c\
-			./src/player.c\
-			./src/raycast.c\
-			./utils/get_next_line_utils_bonus.c\
-			./utils/mlx_utilities.c\
+SRC		=	get_next_line/get_next_line.c\
+			src/main.c\
+			src/file_procesator.c\
+			src/file_procesator2.c\
+			src/check_nd_save.c\
+			src/ceil_floor.c\
+			src/get_map_reads.c\
+			src/get_map_reads2.c\
+			src/parse.c\
+			src/create_and_clean.c\
+			src/floor_sky_draw.c\
+			src/init_raycast.c\
+			src/raycasting.c\
+			src/rc_wall.c\
+			src/keyboard.c\
+			src/handle_events.c\
+			src/load_texture.c\
+			src/init_params.c\
+			src/utils.c\
+			src/init_params2.c\
+			src/sprites.c\
+			src/sprites_casting.c\
+			src/screenshoot.c\
+			utils/ft_strdup_utils.c\
+			utils/ft_strjoin_char.c\
+			utils/ft_is.c\
+			utils/utilities.c\
+			utils/utilities2.c\
 
 # LIBOBJ	=	./libft/*.o
 LIBFT_DIR = libft
@@ -54,7 +72,7 @@ FLAGS	=	-Wall -Wall -Werror
 
 CC	=		gcc
 
-INCLUDE	=	./includes/cub3d.h
+INCLUDE	=	includes
 
 RED		=	\033[0;31m
 BLUE	=	\033[0;34m

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select_os.h                                        :+:      :+:    :+:   */
+/*   init_params2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 12:08:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:58:16 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/12/15 14:35:10 by agutierr          #+#    #+#             */
+/*   Updated: 2021/07/18 12:44:38 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _DETECT_SO_H
-# define _DETECT_SO_H
+#include <mlx.h>
+#include "../includes/game.h"
+#include "../includes/cub3d.h"
 
-# ifdef __APPLE__
-#  include "key_macos.h"
-#  include "../mlx/minilibx-macos/mlx.h"
-# else
-#  include "key_linux.h"
-#  include "../mlx/minilibx-linux/mlx.h"
-# endif
-#endif
+void		reset_mlx(t_mlx *mlx, t_config config)
+{
+	mlx->ptr = NULL;
+	mlx->win = NULL;
+	mlx->win_height = config.height;
+	mlx->win_width = config.width;
+	mlx->finalmap = config.mapa.worldmap;
+}

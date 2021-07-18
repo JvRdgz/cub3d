@@ -1,12 +1,11 @@
 R 1920 1080
-NO ../textures/north
-SO ../textures/south
-WE ../textures/west
-EA ../textures/east
-
-S ../textures/sprite
-F 86,86,86
-C 100,0,0
+NO ./textures/redbrick.xpm
+SO ./textures/wood.xpm
+WE ./textures/mossy.xpm
+EA ./textures/graffiti.xpm
+S ./textures/sprites/barrel.xpm
+F 209,209,209
+C 23,236,255
 
 11111111111111111111111111111
 10000000000011000000000000001

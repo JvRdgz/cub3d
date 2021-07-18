@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_processor.c                                   :+:      :+:    :+:   */
+/*   file_procesator2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:17:21 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/12/18 11:24:52 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/12/15 13:18:59 by agutierr          #+#    #+#             */
+/*   Updated: 2021/07/18 12:44:10 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3d.h"
+#include "../includes/cub3d.h"
 
 void	check_params(t_config config)
 {

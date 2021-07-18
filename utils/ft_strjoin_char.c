@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select_os.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 12:08:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:58:16 by jarodrig         ###   ########.fr       */
+/*   Created: 2020/12/17 11:37:10 by agutierr          #+#    #+#             */
+/*   Updated: 2021/07/18 14:22:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _DETECT_SO_H
-# define _DETECT_SO_H
+#include "../includes/utils.h"
 
-# ifdef __APPLE__
-#  include "key_macos.h"
-#  include "../mlx/minilibx-macos/mlx.h"
-# else
-#  include "key_linux.h"
-#  include "../mlx/minilibx-linux/mlx.h"
-# endif
-#endif
+char				*ft_strjoin_char(char *str, char c)
+{
+	char			*finally;
+	int				i;
+
+	i = 0;
+	if (!(finally = (char *)malloc((sizeof(char *)) * ft_strlen(str)) + 2))
+	{
+		printf("ERROR: malloc my_strjoin ha fallado");
+		exit(-1);
+	}
+	while (str[i] != '\0')
+	{
+		finally[i] = str[i];
+		i++;
+	}
+	finally[i] = c;
+	finally[i + 1] = '\0';
+	return (finally);
+}
