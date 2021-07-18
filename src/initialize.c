@@ -41,14 +41,14 @@ void		init_ray_params(t_raycaster *raycaster, t_data *data, t_player *player)
 
 void		init_pos_player_ns(t_raycaster *raycaster, t_data *data, t_player *player)
 {
-	if (player->firs_pos == 'N')
+	if (player->first_init_pos == 'N')
 	{
 		player->dir_x = -1;
 		player->dir_y = 0;
 		player->plane_x = 0;
 		player->plane_y = 0.66;
 	}
-	else if (player->first_pos == 'S')
+	else if (player->first_init_pos == 'S')
 	{
 		player->dir_x = 1;
 		player->dir_y = 0;
@@ -59,14 +59,14 @@ void		init_pos_player_ns(t_raycaster *raycaster, t_data *data, t_player *player)
 
 void		init_pos_player_ew(t_raycaster *raycaster, t_data *data, t_player *player)
 {
-	if (player->firs_pos == 'E')
+	if (player->first_init_pos == 'E')
 	{
 		player->dir_x = 0;
 		player->dir_y = 1;
 		player->plane_x = 0,66;
 		player->plane_y = 0;
 	}
-	else if (player->first_pos == 'W')
+	else if (player->first_init_pos == 'W')
 	{
 		player->dir_x = 0;
 		player->dir_y = -1;

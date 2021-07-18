@@ -59,6 +59,7 @@ typedef	struct			s_player
 	double				pos_x;
 	double				pos_y;
 	int					first_pos[2];
+	char				first_init_pos;
 /*
 ** Direccion del jugador
 */

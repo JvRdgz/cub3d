@@ -26,7 +26,7 @@ void			initialize_window(t_raycaster *raycaster, t_data *data, t_player *player,
 	// img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, path, &(raycaster->w), &(raycaster->h));
 	// img->img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "../img/wood.xpm", &(raycaster->w), &(raycaster->h));
 	// load_img(data, raycaster, img);
-	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
+	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	init_draw(raycaster, player);
 	while (raycaster->x < raycaster->w)
 	{
