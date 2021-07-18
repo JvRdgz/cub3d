@@ -24,6 +24,7 @@ void		init_ray_params(t_raycaster *raycaster, t_data *data, t_player *player)
 	raycaster->text_side = 1;
 	raycaster->text_height = 64;
 	raycaster->text_width = 64;
+	player->speed = 0.060;
 	raycaster->w = SCREENWIDTH;
 	raycaster->h = SCREENHEIGHT;
 	player->up = 0;
