@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 09:46:58 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:44:47 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:32:32 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 int		key_press(int key, t_mlx *mlx)

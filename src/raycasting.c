@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 13:49:23 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:45:56 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:32:54 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 int			raycasting(t_mlx *mlx)

@@ -6,13 +6,12 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:41:55 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:45:01 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:32:36 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <math.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 void		load_textures(t_mlx *mlx, t_config *config)

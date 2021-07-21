@@ -6,11 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 11:37:10 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:22:37 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:38 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.h"
+#include "../includes/cub3d.h"
 
 char				*ft_strjoin_char(char *str, char c)
 {

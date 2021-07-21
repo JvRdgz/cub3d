@@ -6,13 +6,13 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 13:05:06 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:44:17 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:01:48 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_mapi			read_map(char *file, t_config *config)
+t_map			read_map(char *file, t_config *config)
 {
 	int			fd;
 	char		**map;

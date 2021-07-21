@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:22:50 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:44:23 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:32:09 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 void			handle_events3(t_mlx *mlx)

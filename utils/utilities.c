@@ -6,11 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 11:37:29 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:49:56 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:43 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.h"
+#include "../includes/cub3d.h"
 
 void			ace(char *str, ...)
 {

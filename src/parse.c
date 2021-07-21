@@ -6,14 +6,13 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 13:08:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:45:50 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 17:01:48 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/game.h"
 
-t_mapi			parserico(char **map, t_config *config)
+t_map			parserico(char **map, t_config *config)
 {
 	int		i;
 	int		j;
@@ -42,7 +41,7 @@ t_mapi			parserico(char **map, t_config *config)
 	return (config->mapa);
 }
 
-void			ceil_floor_parsing(t_mapi *mapa, t_config *config)
+void			ceil_floor_parsing(t_map *mapa, t_config *config)
 {
 	config->hexaceil = creatergb(config->ceil[0],
 	config->ceil[1], config->ceil[2]);

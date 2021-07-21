@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.h"
 #include "../includes/cub3d.h"
 
 char		*ft_strdup2(char *str, char now, int max, int *count_sprites)

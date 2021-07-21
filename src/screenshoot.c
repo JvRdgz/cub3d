@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 09:15:40 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:46:04 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:02 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 static t_bitmap	fill_header(t_mlx *mlx)

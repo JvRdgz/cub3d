@@ -6,11 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 08:53:07 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:29:43 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:29 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/utils.h"
+#include "../includes/cub3d.h"
 
 int			char_to_num(char *str)
 {

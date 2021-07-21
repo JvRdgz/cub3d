@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 13:08:31 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:46:14 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:10 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 void			sprite_drawing(t_mlx *mlx, int i, int y)

@@ -6,12 +6,11 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/17 09:43:17 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:46:08 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:33:06 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include "../includes/game.h"
 #include "../includes/cub3d.h"
 
 void			sprite_casting2(t_mlx *mlx)

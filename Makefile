@@ -6,7 +6,7 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/07/18 15:00:24 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/07/21 16:43:51 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	= 	cub3d
 
 SRC		=	get_next_line/get_next_line.c\
 			src/main.c\
-			src/file_procesator.c\
-			src/file_procesator2.c\
+			src/file_processor.c\
+			src/file_processor_aux.c\
 			src/check_nd_save.c\
 			src/ceil_floor.c\
 			src/get_map_reads.c\

@@ -6,14 +6,12 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 13:48:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:10:49 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/07/21 16:32:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "../includes/game.h"
 #include "../get_next_line/get_next_line.h"
-#include "../includes/utils.h"
 
 int				main(int argc, char **argv)
 {
