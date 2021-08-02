@@ -7,4 +7,4 @@
 # gcc ./src/*.c ./utils/*.c ./includes/cub3d.h \
 #	-lmlx -lXext -lX11 && ./a.out && rm -rf ./includes/*.gch
 
-make fclean && make && ./cub3d
+make fclean && make && ./cub3d maps/map.cub

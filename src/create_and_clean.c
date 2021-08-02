@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   create_and_clean.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:08:05 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:31:54 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/02 21:12:18 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/02 21:12:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-int		exit_game(t_mlx *mlx)
+int	exit_game(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->ptr, mlx->win);
 	free(mlx->ptr);
@@ -21,7 +21,7 @@ int		exit_game(t_mlx *mlx)
 	return (0);
 }
 
-int		close_win(int keycode, t_mlx *mlx)
+int	close_win(int keycode, t_mlx *mlx)
 {
 	if (keycode == KEY_ESC)
 		exit_game(mlx);
