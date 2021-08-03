@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 09:46:58 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:32 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:58:33 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:58:44 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-int		key_press(int key, t_mlx *mlx)
+int	key_press(int key, t_mlx *mlx)
 {
 	if (key == KEY_UP || key == KEY_W)
 		mlx->rc.up = 1;
@@ -38,7 +38,7 @@ int		key_press(int key, t_mlx *mlx)
 	return (0);
 }
 
-int		key_release(int key, t_mlx *mlx)
+int	key_release(int key, t_mlx *mlx)
 {
 	if (key == KEY_UP || key == KEY_W)
 		mlx->rc.up = 0;

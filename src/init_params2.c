@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_params2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 14:35:10 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:20 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:57:13 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:57:42 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void		reset_mlx(t_mlx *mlx, t_config config)
+void	reset_mlx(t_mlx *mlx, t_config config)
 {
 	mlx->ptr = NULL;
 	mlx->win = NULL;

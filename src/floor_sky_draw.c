@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   floor_sky_draw.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:24:14 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:58:16 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:35:16 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:35:50 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void		sky_draw(t_mlx *mlx, int x)
+void	sky_draw(t_mlx *mlx, int x)
 {
 	int		y;
 	int		pixel;
@@ -42,7 +42,7 @@ void		sky_draw(t_mlx *mlx, int x)
 	}
 }
 
-void		floor_draw(t_mlx *mlx, int x)
+void	floor_draw(t_mlx *mlx, int x)
 {
 	int		y;
 	int		pixel;

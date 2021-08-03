@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   sprites_casting.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 09:43:17 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:33:06 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 20:49:25 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 20:50:44 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void			sprite_casting2(t_mlx *mlx)
+void	sprite_casting2(t_mlx *mlx)
 {
-	mlx->rc.invdet = 1.0 / (mlx->rc.player_plane_x *
-				mlx->rc.diry - mlx->rc.dirx * mlx->rc.player_plane_y);
-	mlx->rc.transformx = mlx->rc.invdet * (mlx->rc.diry *
-	mlx->rc.spritex - mlx->rc.dirx * mlx->rc.spritey);
-	mlx->rc.transformy = mlx->rc.invdet * (-mlx->rc.player_plane_y *
-	mlx->rc.spritex + mlx->rc.player_plane_x * mlx->rc.spritey);
-	mlx->rc.spritescreenx = (int)((mlx->win_width / 2) *
-	(1 + mlx->rc.transformx / mlx->rc.transformy));
+	mlx->rc.invdet = 1.0 / (mlx->rc.player_plane_x
+			* mlx->rc.diry - mlx->rc.dirx * mlx->rc.player_plane_y);
+	mlx->rc.transformx = mlx->rc.invdet * (mlx->rc.diry
+			* mlx->rc.spritex - mlx->rc.dirx * mlx->rc.spritey);
+	mlx->rc.transformy = mlx->rc.invdet * (-mlx->rc.player_plane_y
+			* mlx->rc.spritex + mlx->rc.player_plane_x * mlx->rc.spritey);
+	mlx->rc.spritescreenx = (int)((mlx->win_width / 2)
+			* (1 + mlx->rc.transformx / mlx->rc.transformy));
 	mlx->rc.spriteheight = abs((int)(mlx->win_height / (mlx->rc.transformy)));
 	mlx->rc.drawstarty = -mlx->rc.spriteheight / 2 + mlx->win_height / 2;
 	if (mlx->rc.drawstarty < 0)
@@ -39,10 +39,10 @@ void			sprite_casting2(t_mlx *mlx)
 		mlx->rc.drawendx = mlx->win_width - 1;
 }
 
-void			sprite_casting(t_mlx *mlx)
+void	sprite_casting(t_mlx *mlx)
 {
-	int i;
-	int y;
+	int	i;
+	int	y;
 
 	i = 0;
 	y = 0;

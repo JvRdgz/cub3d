@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rc_wall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 09:19:45 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:58 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 19:31:37 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 20:16:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void		dda(t_mlx *mlx)
+void	dda(t_mlx *mlx)
 {
 	while (mlx->rc.hit == 0)
 	{
@@ -34,16 +34,16 @@ void		dda(t_mlx *mlx)
 	}
 }
 
-void		calcule_wall(t_mlx *mlx)
+void	calcule_wall(t_mlx *mlx)
 {
-	mlx->rc.tex_id = mlx->finalmap[mlx->rc.map_x]
-	[mlx->rc.map_y] + mlx->rc.tex_side;
+	mlx->rc.tex_id = mlx->finalmap[mlx->rc.map_x][mlx->rc.map_y]
+		+ mlx->rc.tex_side;
 	if (mlx->rc.side == 0)
-		mlx->rc.wallx = mlx->rc.player_pos_y +
-		mlx->rc.perp_wall_dist * mlx->rc.ray_dir_y;
+		mlx->rc.wallx = mlx->rc.player_pos_y
+			+ mlx->rc.perp_wall_dist * mlx->rc.ray_dir_y;
 	else
-		mlx->rc.wallx = mlx->rc.player_pos_x +
-		mlx->rc.perp_wall_dist * mlx->rc.ray_dir_x;
+		mlx->rc.wallx = mlx->rc.player_pos_x
+			+ mlx->rc.perp_wall_dist * mlx->rc.ray_dir_x;
 	mlx->rc.wallx -= floor(mlx->rc.wallx);
 	mlx->rc.tex_x = abs((int)(mlx->rc.wallx * (double)(64)));
 	if (mlx->rc.side == 0 && mlx->rc.ray_dir_x > 0)
@@ -58,20 +58,20 @@ void		calcule_wall(t_mlx *mlx)
 		mlx->rc.draw_end = mlx->win_height;
 }
 
-void		draw_wall(t_mlx *mlx, int x)
+void	draw_wall(t_mlx *mlx, int x)
 {
 	while (mlx->rc.draw_start <= mlx->rc.draw_end)
 	{
-		mlx->rc.tex_y = abs((((mlx->rc.draw_start * 256 -
-		mlx->win_height * 128 + mlx->rc.line_height * 128)
-		* 64) / mlx->rc.line_height) / 256);
-		ft_memcpy(mlx->image.addr + 4 * mlx->win_width *
-		mlx->rc.draw_start + x * 4,
-				&mlx->rc.tex[mlx->rc.tex_id].addr[mlx->rc.tex_y
-				% mlx->rc.tex_height *
-				mlx->rc.tex[mlx->rc.tex_id].linesize +
-				mlx->rc.tex_x % mlx->rc.tex_width *
-				mlx->rc.tex[mlx->rc.tex_id].bpp / 8], sizeof(int));
+		mlx->rc.tex_y = abs((((mlx->rc.draw_start * 256
+							- mlx->win_height * 128 + mlx->rc.line_height * 128)
+						* 64) / mlx->rc.line_height) / 256);
+		ft_memcpy(mlx->image.addr + 4 * mlx->win_width
+			* mlx->rc.draw_start + x * 4,
+			&mlx->rc.tex[mlx->rc.tex_id].addr[mlx->rc.tex_y
+			% mlx->rc.tex_height
+			* mlx->rc.tex[mlx->rc.tex_id].linesize
+			+ mlx->rc.tex_x % mlx->rc.tex_width
+			* mlx->rc.tex[mlx->rc.tex_id].bpp / 8], sizeof(int));
 		mlx->rc.draw_start++;
 	}
 }

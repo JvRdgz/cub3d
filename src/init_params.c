@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_params.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 09:48:59 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:16 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:56:38 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:56:49 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void			reset_t_config(t_config *config)
+void	reset_t_config(t_config *config)
 {
 	config->flag = 0;
 	config->i = 0;
@@ -34,7 +34,7 @@ void			reset_t_config(t_config *config)
 	init_config(config);
 }
 
-void			init_config(t_config *config)
+void	init_config(t_config *config)
 {
 	int	i;
 

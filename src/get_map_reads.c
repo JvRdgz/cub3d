@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_reads.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 13:05:06 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 17:01:48 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:36:17 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:41:33 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_map			read_map(char *file, t_config *config)
+t_map	read_map(char *file, t_config *config)
 {
 	int			fd;
 	char		**map;
@@ -21,7 +21,7 @@ t_map			read_map(char *file, t_config *config)
 	if (fd == -1)
 		print_err("Fallo al intentar abrir el archivo .cub");
 	config->maxr = (what_is_higher(config->map_max_lines,
-	config->map_max_rows)) + 2;
+				config->map_max_rows)) + 2;
 	map = read_map2(fd, config, 0);
 	check_map(config, map);
 	valid_map(map);
@@ -31,7 +31,7 @@ t_map			read_map(char *file, t_config *config)
 	return (config->mapa);
 }
 
-char			**read_map2(int fd, t_config *config, int count_sprites)
+char	**read_map2(int fd, t_config *config, int count_sprites)
 {
 	char		*line;
 	char		**map;
@@ -59,7 +59,7 @@ char			**read_map2(int fd, t_config *config, int count_sprites)
 	return (map);
 }
 
-void			check_map(t_config *config, char **map)
+void	check_map(t_config *config, char **map)
 {
 	int			i;
 	int			j;
@@ -77,11 +77,11 @@ void			check_map(t_config *config, char **map)
 	}
 }
 
-void			check_map2(t_config *config, char **map, int i, int j)
+void	check_map2(t_config *config, char **map, int i, int j)
 {
-	if (((map[i][j] == 'N') || (map[i][j] == 'S') ||
-	(map[i][j] == 'E') || (map[i][j] == 'W')) &&
-	(config->player_begin[0] == 0 && config->player_begin[1] == 0))
+	if (((map[i][j] == 'N') || (map[i][j] == 'S')
+		|| (map[i][j] == 'E') || (map[i][j] == 'W'))
+			&& (config->player_begin[0] == 0 && config->player_begin[1] == 0))
 	{
 		check_wall(config, map, i, j);
 		config->player_begin[0] = j;
@@ -89,13 +89,13 @@ void			check_map2(t_config *config, char **map, int i, int j)
 		config->player_pos_begin = map[i][j];
 		map[i][j] = '0';
 	}
-	else if (((map[i][j] == 'N') || (map[i][j] == 'S') ||
-	(map[i][j] == 'E') || (map[i][j] == 'W')) &&
-	(config->player_begin[0] != 0 && config->player_begin[1] != 0))
+	else if (((map[i][j] == 'N') || (map[i][j] == 'S')
+		|| (map[i][j] == 'E') || (map[i][j] == 'W'))
+			&& (config->player_begin[0] != 0 && config->player_begin[1] != 0))
 		print_err("Ya existe otra posicion para el jugador");
 }
 
-void			check_wall(t_config *config, char **map, int i, int j)
+void	check_wall(t_config *config, char **map, int i, int j)
 {
 	if ((i != 0) && map[i - 1][j] == 1)
 		config->muro_arriba_abajo = 1;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_reads2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:29:06 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:44:20 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:41:54 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:47:50 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int				who_needs_a_map(char *line, char *chain2, int tab, int coincide)
+int	who_needs_a_map(char *line, char *chain2, int tab, int coincide)
 {
 	int		i;
 	int		j;
@@ -41,7 +41,7 @@ int				who_needs_a_map(char *line, char *chain2, int tab, int coincide)
 	return (who_needs_a_map2(tab, coincide));
 }
 
-int				who_needs_a_map2(int tab, int coincide)
+int	who_needs_a_map2(int tab, int coincide)
 {
 	if (coincide == 1)
 	{
@@ -53,7 +53,7 @@ int				who_needs_a_map2(int tab, int coincide)
 		return (0);
 }
 
-char			*fill_me(char c, int lenght)
+char	*fill_me(char c, int lenght)
 {
 	char		*finally;
 	int			i;
@@ -70,7 +70,7 @@ char			*fill_me(char c, int lenght)
 	return (finally);
 }
 
-void			valid_map(char **map)
+void	valid_map(char **map)
 {
 	int			i;
 	int			j;
@@ -84,30 +84,30 @@ void			valid_map(char **map)
 			valid_map2(map, i, j);
 			j++;
 		}
-		if ((map[i][j] == '9') &&
-			(((map[i - 1][j] != '1') && (map[i - 1][j] != '9')) ||
-			((map[i + 1][j] != '1') && (map[i + 1][j] != '9')) ||
-			((map[i][j - 1] != '1') && (map[i][j - 1] != '9'))))
+		if ((map[i][j] == '9')
+			&& (((map[i - 1][j] != '1') && (map[i - 1][j] != '9'))
+				|| ((map[i + 1][j] != '1') && (map[i + 1][j] != '9'))
+				|| ((map[i][j - 1] != '1') && (map[i][j - 1] != '9'))))
 			print_err("Mapa abierto\n");
 		i++;
 	}
 }
 
-void			valid_map2(char **map, int i, int j)
+void	valid_map2(char **map, int i, int j)
 {
-	if ((map[0][j] != '9' && map[0][j] != '1') ||
-	(map[i][0] != '9' && map[i][0] != '1') ||
-	(map[0][0] != '9' && map[0][0] != '1'))
+	if ((map[0][j] != '9' && map[0][j] != '1')
+		|| (map[i][0] != '9' && map[i][0] != '1')
+		|| (map[0][0] != '9' && map[0][0] != '1'))
 		print_err("Mapa abierto en primeras lineas\n");
-	if ((map[0][j] == '9') &&
-	(((map[1][j] != '1') && (map[1][j] != '9')) ||
-	((map[0][j + 1] != '1') && (map[0][j + 1] != '9')) ||
-	((map[0][j - 1] != '1') && (map[0][j - 1] != '9'))))
+	if ((map[0][j] == '9')
+		&& (((map[1][j] != '1') && (map[1][j] != '9'))
+			|| ((map[0][j + 1] != '1') && (map[0][j + 1] != '9'))
+			|| ((map[0][j - 1] != '1') && (map[0][j - 1] != '9'))))
 		print_err("Mapa abierto\n");
-	else if ((map[i][j] == '9') &&
-	(((map[i - 1][j] != '1') && (map[i - 1][j] != '9')) ||
-	((map[i + 1][j] != '1') && (map[i + 1][j] != '9')) ||
-	((map[i][j + 1] != '1') && (map[i][j + 1] != '9')) ||
-	((map[i][j - 1] != '1') && (map[i][j - 1] != '9'))))
+	else if ((map[i][j] == '9')
+		&& (((map[i - 1][j] != '1') && (map[i - 1][j] != '9'))
+			|| ((map[i + 1][j] != '1') && (map[i + 1][j] != '9'))
+			|| ((map[i][j + 1] != '1') && (map[i][j + 1] != '9'))
+			|| ((map[i][j - 1] != '1') && (map[i][j - 1] != '9'))))
 		print_err("Mapa abierto\n");
 }

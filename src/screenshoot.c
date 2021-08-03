@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screenshoot.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 09:15:40 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:33:02 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 20:19:21 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 20:22:35 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static t_bitmap	fill_header(t_mlx *mlx)
 {
-	t_bitmap header;
+	t_bitmap		header;
 
 	ft_memset(&header, 0, sizeof(header));
 	header.filesize = (mlx->win_width * mlx->win_height
-	* (mlx->image.bpp / 8)) + 54;
+			* (mlx->image.bpp / 8)) + 54;
 	header.pixeldataoffset = 54;
 	header.headersize = 40;
 	header.imagewidth = mlx->win_width;
@@ -30,7 +30,7 @@ static t_bitmap	fill_header(t_mlx *mlx)
 	return (header);
 }
 
-static void		file_write(int fd, const void *buf, ssize_t len)
+static void	file_write(int fd, const void *buf, ssize_t len)
 {
 	if (write(fd, buf, len) != len)
 	{
@@ -39,7 +39,7 @@ static void		file_write(int fd, const void *buf, ssize_t len)
 	}
 }
 
-int				save_bmp(t_mlx *mlx)
+int	save_bmp(t_mlx *mlx)
 {
 	int				fd;
 	t_bitmap		bmp;
@@ -47,7 +47,7 @@ int				save_bmp(t_mlx *mlx)
 	unsigned int	*line;
 
 	mlx->image.addr = mlx_get_data_addr(mlx->image.img,
-	&mlx->image.bpp, &mlx->image.linesize, &mlx->image.endian);
+			&mlx->image.bpp, &mlx->image.linesize, &mlx->image.endian);
 	fd = open("screenshot.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	bmp = fill_header(mlx);
 	if (fd < 0)
@@ -57,8 +57,8 @@ int				save_bmp(t_mlx *mlx)
 	i = 0;
 	while (i < mlx->win_height)
 	{
-		line = (unsigned int *)&mlx->image.addr
-		[(mlx->win_height - i - 1) * mlx->image.linesize];
+		line = (unsigned int *)&mlx->image.addr[(mlx->win_height - i - 1)
+			*mlx->image.linesize];
 		file_write(fd, line, mlx->image.linesize);
 		i++;
 	}

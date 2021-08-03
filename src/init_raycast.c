@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_raycast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 14:45:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:27 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 18:57:53 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 18:58:12 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "../includes/cub3d.h"
 
-void		init_raycast_params(t_mlx *mlx, t_config *config)
+void	init_raycast_params(t_mlx *mlx, t_config *config)
 {
 	mlx->ptr = NULL;
 	mlx->win = NULL;
@@ -41,13 +41,13 @@ void		init_raycast_params(t_mlx *mlx, t_config *config)
 	init_raycast_params3(config, mlx);
 }
 
-void		init_player(t_mlx *mlx, t_config *config)
+void	init_player(t_mlx *mlx, t_config *config)
 {
 	mlx->rc.player_pos_y = (double)config->player_begin[0] + 0.5;
 	mlx->rc.player_pos_x = (double)config->player_begin[1] + 0.5;
 }
 
-void		init_raycast_params2(t_config *config, t_mlx *mlx)
+void	init_raycast_params2(t_config *config, t_mlx *mlx)
 {
 	if (config->player_pos_begin == 'N')
 	{
@@ -65,7 +65,7 @@ void		init_raycast_params2(t_config *config, t_mlx *mlx)
 	}
 }
 
-void		init_raycast_params3(t_config *config, t_mlx *mlx)
+void	init_raycast_params3(t_config *config, t_mlx *mlx)
 {
 	if (config->player_pos_begin == 'E')
 	{

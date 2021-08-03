@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:08:24 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 17:01:48 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 19:26:50 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 19:29:14 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_map			parserico(char **map, t_config *config)
+t_map	parserico(char **map, t_config *config)
 {
 	int		i;
 	int		j;
@@ -21,11 +21,11 @@ t_map			parserico(char **map, t_config *config)
 	config->hexafloor = 0;
 	i = 0;
 	config->mapa.worldmap = (int **)malloc(sizeof(int *)
-	* config->map_max_lines);
+			* config->map_max_lines);
 	while (config->map_max_lines > i)
 	{
 		config->mapa.worldmap[i] = (int *)malloc(sizeof(int)
-		* config->map_max_rows);
+				* config->map_max_rows);
 		j = 0;
 		while (j < config->map_max_rows)
 		{
@@ -41,25 +41,25 @@ t_map			parserico(char **map, t_config *config)
 	return (config->mapa);
 }
 
-void			ceil_floor_parsing(t_map *mapa, t_config *config)
+void	ceil_floor_parsing(t_map *mapa, t_config *config)
 {
 	config->hexaceil = creatergb(config->ceil[0],
-	config->ceil[1], config->ceil[2]);
+			config->ceil[1], config->ceil[2]);
 	config->hexafloor = creatergb(config->floor[0],
-	config->floor[1], config->floor[2]);
+			config->floor[1], config->floor[2]);
 }
 
 unsigned long	creatergb(int r, int g, int b)
 {
-	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
-float			radians_to_grads(float radians)
+float	radians_to_grads(float radians)
 {
 	return (radians * (180.0 / PI));
 }
 
-float			grads_to_radians(float grads)
+float	grads_to_radians(float grads)
 {
 	return (grads * (PI / 180.0));
 }

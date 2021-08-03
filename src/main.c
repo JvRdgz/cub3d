@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 13:48:46 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:32:45 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 19:10:20 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 19:26:38 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../get_next_line/get_next_line.h"
 
-int				main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_config	config;
 	t_mlx		mlx;
@@ -42,16 +42,20 @@ int				main(int argc, char **argv)
 	return (0);
 }
 
-void			final_check(t_config *config)
+void	final_check(t_config *config)
 {
-	config->width > 2560 ? config->width = 2560 : config->width;
-	config->width < 200 ? config->width = 200 : config->width;
-	config->height > 1440 ? config->height = 1440 : config->height;
-	config->height < 100 ? config->height = 100 : config->height;
+	if (config->width > 2560)
+		config->width = 2560;
+	else if (config->width < 200)
+		config->width = 200;
+	else if (config->height > 1440)
+		config->height = 1440;
+	else if (config->height < 100)
+		config->height = 100;
 	check_final_paths(config);
 }
 
-void			check_final_paths(t_config *config)
+void	check_final_paths(t_config *config)
 {
 	config->no = ft_strtrim(config->no, " \t");
 	config->so = ft_strtrim(config->so, " \t");
@@ -60,7 +64,7 @@ void			check_final_paths(t_config *config)
 	config->s = ft_strtrim(config->s, " \t");
 }
 
-void			save_sprites_position(t_mlx *mlx)
+void	save_sprites_position(t_mlx *mlx)
 {
 	int			i;
 	int			j;
@@ -86,7 +90,7 @@ void			save_sprites_position(t_mlx *mlx)
 	}
 }
 
-void			print_values(t_config config)
+void	print_values(t_config config)
 {
 	printf("width %d, height %d\n", config.width, config.height);
 	printf("path  NO: %s\n", config.no);
@@ -95,14 +99,14 @@ void			print_values(t_config config)
 	printf("path  EA: %s\n", config.ea);
 	printf("path  S: %s\n", config.s);
 	printf("floor: | %d,%d,%d |\n", config.floor[0],
-	config.floor[1], config.floor[2]);
+		config.floor[1], config.floor[2]);
 	printf("ceil: | %d,%d,%d |\n",
-	config.ceil[0], config.ceil[1], config.ceil[2]);
+		config.ceil[0], config.ceil[1], config.ceil[2]);
 	printf("Elementos guardados sin contar el **map: | %d |\n", config.flag);
 	printf("Cantidad de lineas: | %d |\n", config.map_max_lines);
 	printf("Cantidad de columnas: | %d |\n", config.map_max_rows);
 	printf("Coordenadas de cominezo: | %d-%d |\n",
-	config.player_begin[0], config.player_begin[1]);
+		config.player_begin[0], config.player_begin[1]);
 	printf("El jugador empieza mirando a: %c\n", config.player_pos_begin);
 	printf("numero de sprites: %d\n", config.numsprites);
 	printf("config.save: %d\n", config.save);
