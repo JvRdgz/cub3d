@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 18:41:54 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 18:47:50 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/03 21:17:20 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ char	*fill_me(char c, int lenght)
 	int			i;
 
 	i = 0;
-	if (!(finally = ((char *)malloc(sizeof(char) * lenght + 2))))
+	finally = (char *)malloc(sizeof(char) * lenght + 2);
+	if (!finally)
 		printf("Malloc ha fallado en: get_map_reads.c");
 	while (i <= lenght)
 	{

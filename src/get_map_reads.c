@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 18:36:17 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 18:41:33 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/03 21:17:58 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ char	**read_map2(int fd, t_config *config, int count_sprites)
 	int			i;
 
 	i = 0;
-	if (!(map = (char **)ft_calloc(sizeof(char *) * config->maxr + 1, 1)))
+	map = (char **)ft_calloc(sizeof(char *) * config->maxr + 1, 1);
+	if (!map)
 		printf("Malloc ha fallado en: get_map_reads.c");
 	while (((get_next_line(fd, &line)) > 0))
 	{

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utilities2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 11:38:28 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:33:48 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 21:15:34 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 21:15:49 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void			print_err(char *str)
+void	print_err(char *str)
 {
 	ft_putstr("ERROR\n");
 	ft_putstr(str);
 	exit(-1);
 }
 
-void			ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int			i;
 

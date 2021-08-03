@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strdup_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 08:33:02 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 12:49:27 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 21:05:10 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 21:07:28 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-char		*ft_strdup2(char *str, char now, int max, int *count_sprites)
+char	*ft_strdup2(char *str, char now, int max, int *count_sprites)
 {
 	char	*finally;
 	int		i;
@@ -20,7 +20,8 @@ char		*ft_strdup2(char *str, char now, int max, int *count_sprites)
 
 	i = -1;
 	j = 0;
-	if (!(finally = (char *)malloc(sizeof(char) * max + 2)))
+	finally = (char *)malloc(sizeof(char) * max + 2);
+	if (!finally)
 		print_err("Malloc ha fallado en: ft_new_strdup.c");
 	while (str[++i] != '\0')
 	{
@@ -40,7 +41,7 @@ char		*ft_strdup2(char *str, char now, int max, int *count_sprites)
 	return (finally);
 }
 
-void		change_tabs(char *finally, char c, int n)
+void	change_tabs(char *finally, char c, int n)
 {
 	int		i;
 

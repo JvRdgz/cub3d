@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 08:53:07 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 16:33:29 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 21:01:04 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/03 21:04:00 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int			char_to_num(char *str)
+int	char_to_num(char *str)
 {
 	int		i;
 	int		x;
@@ -30,7 +30,7 @@ int			char_to_num(char *str)
 	return (x);
 }
 
-char		*give_me_digit_without_spaces(char *str)
+char	*give_me_digit_without_spaces(char *str)
 {
 	int		i;
 	int		x;
@@ -38,7 +38,8 @@ char		*give_me_digit_without_spaces(char *str)
 
 	i = 0;
 	x = 0;
-	if (!(finally = ft_calloc(ft_strlen(str), 1)))
+	finally = ft_calloc(ft_strlen(str), 1);
+	if (!finally)
 		return (NULL);
 	while (str[i])
 	{
