@@ -6,13 +6,13 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 17:14:51 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/01/05 17:14:57 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:18:29 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		size;
 	t_list	*current;

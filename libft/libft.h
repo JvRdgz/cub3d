@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 21:30:47 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/07/18 14:03:26 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:21:04 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef	struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -43,7 +43,7 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 char				*ft_strnstr(const char *haystack,
-		const char *needle, size_t len);
+						const char *needle, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_calloc(size_t count, size_t size);
@@ -67,6 +67,6 @@ void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-		void(*del)(void *));
+						void(*del)(void *));
 
 #endif

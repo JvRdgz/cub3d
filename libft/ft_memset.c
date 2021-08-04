@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:28:51 by jarodrig          #+#    #+#             */
-/*   Updated: 2019/11/18 18:51:03 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:26:51 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t				i;
-	unsigned	char	*dst;
+	size_t			i;
+	unsigned char	*dst;
 
 	dst = (unsigned char *)b;
 	i = 0;

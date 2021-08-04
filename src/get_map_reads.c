@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 18:36:17 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 21:17:58 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/04 19:27:42 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/04 19:27:45 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ void	check_map2(t_config *config, char **map, int i, int j)
 void	check_wall(t_config *config, char **map, int i, int j)
 {
 	if ((i != 0) && map[i - 1][j] == 1)
-		config->muro_arriba_abajo = 1;
+		config->wall_up_down = 1;
 	else if (map[i + 1][j] == 1)
-		config->muro_arriba_abajo = -1;
+		config->wall_up_down = -1;
 	if (map[i][j - 1] == 1)
-		config->muro_izq_dcha = 1;
+		config->wall_left_right = 1;
 	else if (map[i][j + 1] == 1)
-		config->muro_arriba_abajo = -1;
+		config->wall_up_down = -1;
 }

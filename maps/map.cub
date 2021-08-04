@@ -1,8 +1,8 @@
-R 1920 1080
+R 848 380
 NO ./textures/redbrick.xpm
 SO ./textures/wood.xpm
 WE ./textures/mossy.xpm
-EA ./textures/graffiti.xpm
+EA ./textures/bluestone.xpm
 S ./textures/sprites/barrel.xpm
 F 209,209,209
 C 23,236,255

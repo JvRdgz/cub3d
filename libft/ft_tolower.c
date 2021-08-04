@@ -6,13 +6,13 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 19:29:59 by jarodrig          #+#    #+#             */
-/*   Updated: 2019/11/14 19:07:32 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:26:29 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c < 65 || c > 90)
 		return (c);

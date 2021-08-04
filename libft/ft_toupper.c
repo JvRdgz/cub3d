@@ -6,13 +6,13 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 19:09:47 by jarodrig          #+#    #+#             */
-/*   Updated: 2019/11/14 19:37:51 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:33:01 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c < 97 || c > 122)
 		return (c);

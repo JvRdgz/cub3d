@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 18:10:15 by jarodrig          #+#    #+#             */
-/*   Updated: 2019/11/14 19:37:22 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:12:01 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned	char	*sr;
-	unsigned	char	*dest;
+	unsigned char	*sr;
+	unsigned char	*dest;
 
 	sr = (unsigned char *)src;
 	dest = (unsigned char *)dst;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 18:56:38 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 18:56:49 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/04 19:27:58 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/04 19:28:01 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	reset_t_config(t_config *config)
 	config->maxr = 0;
 	config->player_begin[0] = 0;
 	config->player_begin[1] = 0;
-	config->muro_izq_dcha = 0;
-	config->muro_arriba_abajo = 0;
+	config->wall_left_right = 0;
+	config->wall_up_down = 0;
 	init_config(config);
 }
 

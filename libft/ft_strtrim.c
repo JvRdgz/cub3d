@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 22:05:54 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/07/18 14:03:26 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:26:14 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static unsigned int	ft_start(char const *s1, char const *set)
 	return (i);
 }
 
-static size_t		ft_lenaux(char const *s1, char const *set, unsigned int s)
+static size_t	ft_lenaux(char const *s1, char const *set, unsigned int s)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -64,7 +64,7 @@ static size_t		ft_lenaux(char const *s1, char const *set, unsigned int s)
 	return (0);
 }
 
-char				*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char			*str;
 	unsigned int	start;

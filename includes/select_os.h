@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   select_os.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 12:08:54 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/18 14:58:16 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/04 19:36:58 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/04 20:15:51 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _DETECT_SO_H
-# define _DETECT_SO_H
+#ifndef SELECT_OS_H
+# define SELECT_OS_H
 
 # ifdef __APPLE__
 #  include "key_macos.h"

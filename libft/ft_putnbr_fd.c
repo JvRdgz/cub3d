@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 22:01:23 by jarodrig          #+#    #+#             */
-/*   Updated: 2020/11/11 22:01:25 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:19:49 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int aux;
+	unsigned int	aux;
 
 	aux = n;
 	if (n < 0)

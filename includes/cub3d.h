@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 12:07:16 by agutierr          #+#    #+#             */
-/*   Updated: 2021/07/21 17:07:56 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/04 19:36:31 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/04 19:36:33 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_I
-# define _CUB3D_I
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <math.h>
 # include <sys/types.h>
@@ -29,12 +29,12 @@
 # define ROT_SPEED 0.0336
 # define AMB_LIGHT 7
 
-typedef struct		s_map
+typedef struct s_map
 {
 	int				**worldmap;
 }					t_map;
 
-typedef struct		s_config
+typedef struct s_config
 {
 	int				flag;
 	int				flag_path;
@@ -56,14 +56,14 @@ typedef struct		s_config
 	char			player_pos_begin;
 	int				save;
 	int				numsprites;
-	int				muro_arriba_abajo;
-	int				muro_izq_dcha;
+	int				wall_up_down;
+	int				wall_left_right;
 	unsigned long	hexaceil;
 	unsigned long	hexafloor;
 	t_map			mapa;
 }					t_config;
 
-typedef struct		s_bitmap
+typedef struct s_bitmap
 {
 	unsigned int	filesize;
 	unsigned short	reserved1;
@@ -82,7 +82,7 @@ typedef struct		s_bitmap
 	unsigned int	importantcolors;
 }					t_bitmap;
 
-typedef struct		s_img
+typedef struct s_img
 {
 	void			*img;
 	char			*addr;
@@ -91,7 +91,7 @@ typedef struct		s_img
 	int				bpp;
 }					t_img;
 
-typedef struct		s_sprite
+typedef struct s_sprite
 {
 	int				id;
 	double			x;
@@ -100,7 +100,7 @@ typedef struct		s_sprite
 	t_img			tex;
 }					t_sprite;
 
-typedef	struct		s_raycasting
+typedef struct s_raycasting
 {
 	double			player_pos_x;
 	double			player_pos_y;
@@ -171,7 +171,7 @@ typedef	struct		s_raycasting
 	t_img			tex[12];
 }					t_raycasting;
 
-typedef	struct		s_mlx
+typedef struct s_mlx
 {
 	void			*ptr;
 	void			*win;
@@ -206,7 +206,7 @@ char				*change_char(char *line, char a, char b);
 t_map				read_map(char *file, t_config *config);
 char				**read_map2(int fd, t_config *config, int count_sprites);
 int					who_needs_a_map(char *line, char *chain2,
-					int tab, int coincide);
+						int tab, int coincide);
 int					who_needs_a_map2(int tab, int coincide);
 void				check_map(t_config *config, char **map);
 void				check_map2(t_config *config, char **map, int i, int j);
@@ -236,7 +236,7 @@ int					handle_events(t_mlx *mlx);
 void				handle_events2(t_mlx *mlx);
 void				handle_events3(t_mlx *mlx);
 void				handle_events4(t_mlx *mlx,
-					double olddirx, double oldplanex);
+						double olddirx, double oldplanex);
 void				create_window(t_mlx *mlx, t_config config);
 int					exit_game(t_mlx *mlx);
 int					close_win(int keycode, t_mlx *mlx);
@@ -265,17 +265,19 @@ void				sprite_drawing(t_mlx *mlx, int i, int y);
 void				sprite_order(t_mlx *mlx);
 void				sprite_preorder(t_mlx *mlx);
 int					save_bmp(t_mlx *mlx);
-char			*ft_strjoin_char(char *str, char c);
-char			*ft_strdup2(char *str, char now, int max, int *count_sprites);
-void			change_tabs(char *finally, char c, int n);
-void			double_kill(char **str);
-int				what_is_higher(int a, int b);
-int				char_to_num(char *str);
-char			*give_me_digit_without_spaces(char *str);
-void			kill(char *str);
-void			double_kill(char **str);
-void			ace(char *str, ...);
-void			print_err(char *str);
-void			ft_putstr(char *str);
-int				white_spaces(char c);
+char				*ft_strjoin_char(char *str, char c);
+char				*ft_strdup2(char *str, char now, int max,
+						int *count_sprites);
+void				change_tabs(char *finally, char c, int n);
+void				double_kill(char **str);
+int					what_is_higher(int a, int b);
+int					char_to_num(char *str);
+char				*give_me_digit_without_spaces(char *str);
+void				kill(char *str);
+void				double_kill(char **str);
+void				ace(char *str, ...);
+void				print_err(char *str);
+void				ft_putstr(char *str);
+int					white_spaces(char c);
+void				load_textures_aux(t_mlx *mlx, t_config *config);
 #endif

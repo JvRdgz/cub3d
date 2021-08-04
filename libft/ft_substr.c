@@ -6,7 +6,7 @@
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 18:26:12 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/07/18 14:03:26 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/04 22:34:37 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	lens = ft_strlen(s);
 	if (start >= lens)
 		return (ft_strdup(""));
-	if (!(subst = (char *)malloc(sizeof(char) * len + 1)))
+	subst = (char *)malloc(sizeof(char) * len + 1);
+	if (!subst)
 		return (NULL);
 	i = start;
 	j = 0;
