@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 19:27:58 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/04 19:28:01 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 19:35:03 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	init_config(t_config *config)
 
 	i = 0;
 	config->numsprites = 0;
-	config->save = 0;
 	config->player_pos_begin = '\0';
 	while (i < 3)
 	{

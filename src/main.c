@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 19:10:20 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 19:26:38 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:10:39 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,15 @@ int	main(int argc, char **argv)
 	t_config	config;
 	t_mlx		mlx;
 
-	if (argc < 2 || argc > 3)
+	if (argc != 2)
 		print_err("Numero de argumentos invalido");
 	config = file_procesator(argv[1], argc);
-	if (argc == 3)
-	{
-		check_arg(argv[2]);
-		config.save = 1;
-	}
 	final_check(&config);
 	reset_mlx(&mlx, config);
 	init_raycast_params(&mlx, &config);
 	save_sprites_position(&mlx);
 	mlx.ptr = mlx_init();
-	mlx.win = mlx_new_window(mlx.ptr, mlx.win_width, mlx.win_height, "CUB3D");
+	mlx.win = mlx_new_window(mlx.ptr, mlx.win_width, mlx.win_height, "cub3D");
 	load_textures(&mlx, &config);
 	mlx_hook(mlx.win, 2, 1L << 0, &key_press, &mlx);
 	mlx_hook(mlx.win, 3, 1L << 1, &key_release, &mlx);
@@ -39,6 +34,7 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx.win, 17, 1L << 17, exit_game, &mlx);
 	mlx_loop(mlx.ptr);
 	ace(config.no, config.so, config.we, config.ea, config.s, NULL);
+	system("leaks .cub3D");
 	return (0);
 }
 
@@ -109,5 +105,4 @@ void	print_values(t_config config)
 		config.player_begin[0], config.player_begin[1]);
 	printf("El jugador empieza mirando a: %c\n", config.player_pos_begin);
 	printf("numero de sprites: %d\n", config.numsprites);
-	printf("config.save: %d\n", config.save);
 }

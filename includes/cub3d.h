@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 19:36:31 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/04 19:36:33 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/05 21:22:30 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 21:22:32 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_config
 	int				i;
 	int				player_begin[2];
 	char			player_pos_begin;
-	int				save;
 	int				numsprites;
 	int				wall_up_down;
 	int				wall_left_right;
@@ -192,11 +191,10 @@ t_config			file_procesator(char *file, int argc);
 void				check_errors(char *line, t_config config);
 t_config			load_file(char *file, t_config config);
 t_config			check_file(char *line, t_config config);
-void				check_arg(char *argum);
 void				reset_t_config(t_config *config);
 void				init_config(t_config *config);
 t_config			check_r(char *file, t_config config);
-t_config			check_path(char *file, t_config config);
+t_config			check_cardinals(char *file, t_config config);
 char				*give_me_a_path(char *line, int i);
 t_config			check_ceil_floor(char *line, t_config config);
 void				check_ceil_floor2(char *line);
@@ -204,19 +202,19 @@ void				check_cf(char conmut, char **splitter, t_config *config);
 void				error_xpm(char *final);
 char				*change_char(char *line, char a, char b);
 t_map				read_map(char *file, t_config *config);
-char				**read_map2(int fd, t_config *config, int count_sprites);
-int					who_needs_a_map(char *line, char *chain2,
+char				**read_map_aux(int fd, t_config *config, int count_sprites);
+int					check_valid_map(char *line, char *chain2,
 						int tab, int coincide);
-int					who_needs_a_map2(int tab, int coincide);
+int					check_valid_map_aux(int tab, int coincide);
 void				check_map(t_config *config, char **map);
-void				check_map2(t_config *config, char **map, int i, int j);
+void				check_map_aux(t_config *config, char **map, int i, int j);
 void				valid_map(char **map);
 void				valid_map2(char **map, int i, int j);
 void				print_map(char **map);
 char				*change_char(char *line, char a, char b);
 char				*fill_me(char c, int lenght);
-t_map				parserico(char **map, t_config *config);
-void				ceil_floor_parsing(t_map	*mapa, t_config *config);
+t_map				parser(char **map, t_config *config);
+void				ceil_floor_parser(t_map	*mapa, t_config *config);
 unsigned long		creatergb(int r, int g, int b);
 int					check_lines(char *line, char *chars);
 void				check_params(t_config config);

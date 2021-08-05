@@ -6,32 +6,32 @@
 #    By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/16 20:56:03 by jarodrig          #+#    #+#              #
-#    Updated: 2021/07/21 16:43:51 by jarodrig         ###   ########.fr        #
+#    Updated: 2021/08/05 20:48:12 by jarodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= 	cub3d
+NAME	= 	cub3D
 
 SRC		=	get_next_line/get_next_line.c\
 			src/main.c\
 			src/file_processor.c\
 			src/file_processor_aux.c\
-			src/check_nd_save.c\
+			src/check_re_cardinals.c\
 			src/ceil_floor.c\
 			src/get_map_reads.c\
-			src/get_map_reads2.c\
+			src/get_map_reads_aux.c\
 			src/parse.c\
-			src/create_and_clean.c\
+			src/exit.c\
 			src/floor_sky_draw.c\
 			src/init_raycast.c\
 			src/raycasting.c\
 			src/rc_wall.c\
 			src/keyboard.c\
-			src/handle_events.c\
+			src/events.c\
 			src/load_texture.c\
 			src/init_params.c\
 			src/utils.c\
-			src/init_params2.c\
+			src/init_params_aux.c\
 			src/sprites.c\
 			src/sprites_casting.c\
 			src/screenshoot.c\
@@ -39,7 +39,7 @@ SRC		=	get_next_line/get_next_line.c\
 			utils/ft_strjoin_char.c\
 			utils/ft_is.c\
 			utils/utilities.c\
-			utils/utilities2.c\
+			utils/utilities_aux.c\
 
 # LIBOBJ	=	./libft/*.o
 LIBFT_DIR = libft
@@ -49,7 +49,7 @@ OBJ		=	$(SRC:.c=.o)
 
 OBJS	=	./*.o
 
-NAME_DIR	=	./cub3d
+NAME_DIR	=	./cub3D
 
 # Sistema Windows
 ifeq ($(OS),Windows_NT)
@@ -68,7 +68,7 @@ endif
 
 ############### COMPILADORES SEGUN S.O. #####################
 
-FLAGS	=	-Wall -Wall -Werror
+FLAGS	=	-Wall -Wall -Werror -g
 
 CC	=		gcc
 
@@ -90,7 +90,7 @@ $(LIBS):
 $(NAME):	$(LIBS) $(OBJ)
 	@echo "${BLUE}[--- REMOVING old cub3d ---]${RESET}"
 	@echo ""
-	@rm -rf cub3d
+	@rm -rf cub3D
 	@echo "${BLUE}[--- COMPILING cub3d ---]${RESET}"
 	@echo ""
 	@$(CC) $(SRC) $(FLAGS) $(MLXFLAGS) -Llibft -lft -o $(NAME)
@@ -98,11 +98,9 @@ $(NAME):	$(LIBS) $(OBJ)
 	@echo "${GREEN}[--- BUILD SUCCESSFUL! ---]"
 	@echo ""
 
-#run0: all
-#	clear && ./cub3d maps/map.cub
+run0: all
+	clear && ./cub3D maps/map.cub
 
-#run1: all
-#	clear && ./cub3d maps/valid_hip_hop.cub
 ifeq ($(detected_OS),Darwin)
 norminette:
 	norminette src/* includes/* utils/*

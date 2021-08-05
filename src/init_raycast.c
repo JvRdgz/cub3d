@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 18:57:53 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 18:58:12 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 19:38:22 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_raycast_params(t_mlx *mlx, t_config *config)
 	mlx->rc.down = 0;
 	mlx->rc.right = 0;
 	mlx->rc.left = 0;
-	mlx->rc.savebpm = config->save;
+	mlx->rc.savebpm = 0;
 	mlx->rc.sprites_count = config->numsprites;
 	mlx->rc.sprite = ft_calloc(sizeof(t_sprite) * config->numsprites, 1);
 	mlx->rc.spr_buffer = (double *)malloc(sizeof(double) * mlx->win_width);

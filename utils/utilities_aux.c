@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_params2.c                                     :+:      :+:    :+:   */
+/*   utilities_aux.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 18:57:13 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/04 19:28:18 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/03 21:15:34 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 20:48:06 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "../includes/cub3d.h"
 
-void	reset_mlx(t_mlx *mlx, t_config config)
+void	print_err(char *str)
 {
-	mlx->ptr = NULL;
-	mlx->win = NULL;
-	mlx->win_height = config.height;
-	mlx->win_width = config.width;
-	mlx->finalmap = config.mapa.worldmap;
+	ft_putstr("ERROR\n");
+	ft_putstr(str);
+	exit(-1);
+}
+
+void	ft_putstr(char *str)
+{
+	int			i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }

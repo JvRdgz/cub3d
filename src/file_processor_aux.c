@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 21:14:56 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/02 21:40:26 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 19:26:21 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,12 @@
 void	check_params(t_config config)
 {
 	if (config.flag != 8)
-		print_err("Faltan datos en el archivo .cub");
+		print_err("Faltan datos por especificar en el .cub");
 	if ((config.ceil[0] < 0 || config.ceil[0] > 255)
 		|| (config.ceil[1] < 0 || config.ceil[1] > 255)
 		|| (config.ceil[2] < 0 || config.ceil[2] > 255)
 		|| (config.floor[0] < 0 || config.floor[0] > 255)
 		|| (config.floor[1] < 0 || config.floor[1] > 255)
 		|| (config.floor[2] < 0 || config.floor[2] > 255))
-		print_err("Los valores de ceil/floor deben ser entre 0 y 255.");
-}
-
-void	check_arg(char *argum)
-{
-	if (!((ft_strlen(argum) == 6) && (argum[0] == '-')
-			&& (argum[1] == '-') && (argum[2] == 's')
-			&& (argum[3] == 'a') && (argum[4] == 'v')
-			&& (argum[5] == 'e')))
-		print_err("El tercer argumento debe ser '--save'");
+		print_err("Los valores de C y F deben estar entre 0 y 255.");
 }

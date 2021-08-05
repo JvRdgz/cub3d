@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_reads2.c                                   :+:      :+:    :+:   */
+/*   get_map_reads_aux.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 18:41:54 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 21:17:20 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/05 21:22:54 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 21:22:55 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	who_needs_a_map(char *line, char *chain2, int tab, int coincide)
+int	check_valid_map(char *line, char *chain2, int tab, int coincide)
 {
 	int		i;
 	int		j;
@@ -38,10 +38,10 @@ int	who_needs_a_map(char *line, char *chain2, int tab, int coincide)
 			return (0);
 		i++;
 	}
-	return (who_needs_a_map2(tab, coincide));
+	return (check_valid_map_aux(tab, coincide));
 }
 
-int	who_needs_a_map2(int tab, int coincide)
+int	check_valid_map_aux(int tab, int coincide)
 {
 	if (coincide == 1)
 	{
@@ -61,7 +61,7 @@ char	*fill_me(char c, int lenght)
 	i = 0;
 	finally = (char *)malloc(sizeof(char) * lenght + 2);
 	if (!finally)
-		printf("Malloc ha fallado en: get_map_reads.c");
+		printf("Malloc ha fallado en: get_map_reads_aux.c");
 	while (i <= lenght)
 	{
 		finally[i] = c;

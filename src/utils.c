@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 20:51:03 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 20:52:23 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/05 21:23:00 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 21:23:02 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	error_xpm(char *final)
 void	check_errors(char *line, t_config config)
 {
 	if (((check_lines(line, " NSR\tECFW") == 0 && line[0] != '\0')
-			&& (who_needs_a_map(line, "102 NSWE\t", 0, 0) == 0)))
+			&& (check_valid_map(line, "102 NSWE\t", 0, 0) == 0)))
 		print_err("Elimine los caracteres sobrantes.");
-	if (who_needs_a_map(line, "102 NSWE\t", 0, 0) == 1 && config.flag != 8)
+	if (check_valid_map(line, "102 NSWE\t", 0, 0) == 1 && config.flag != 8)
 		print_err("Declare correctamente los parametros delante del mapa");
-	if (who_needs_a_map(line, " NSCFRWE", 0, 0) == 1)
+	if (check_valid_map(line, " NSCFRWE", 0, 0) == 1)
 		print_err("Elimine los caracteres sobrantes.");
 }

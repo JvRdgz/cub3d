@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_nd_save.c                                    :+:      :+:    :+:   */
+/*   check_re_cardinals.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/02 21:10:17 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/02 21:11:56 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/05 20:46:16 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 21:04:39 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_config	check_r(char *line, t_config config)
 	line = change_char(line, '\t', ' ');
 	splitter = ft_split(line, ' ');
 	if (config.height != -1 || config.width != -1)
-		print_err("Resolucion duplicada");
+		print_err("Resolucion duplicada.");
 	if ((splitter[3]) || (char_to_num(splitter[1]) != 1)
 		|| (char_to_num(splitter[2]) != 1))
 		print_err("Formato de Resolucion incorrecto.");
@@ -36,7 +36,7 @@ t_config	check_r(char *line, t_config config)
 	return (config);
 }
 
-t_config	check_path(char *line, t_config config)
+t_config	check_cardinals(char *line, t_config config)
 {
 	if ((line[0] == 'N') && (line[1] == 'O')
 		&& (white_spaces(line[config.i + 2]) == 1) && (!config.no))
@@ -54,7 +54,7 @@ t_config	check_path(char *line, t_config config)
 		&& (white_spaces(line[1])) && (!config.s))
 		config.s = give_me_a_path(line, 0);
 	else
-		print_err("Formato de texturas incorrecto.");
+		print_err("Formato de las texturas incorrecto.");
 	config.flag += 1;
 	return (config);
 }

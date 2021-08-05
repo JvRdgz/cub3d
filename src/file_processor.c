@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_processor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 21:16:32 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/02 21:39:53 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:32:55 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	drifting_r_path(char *line, t_config *config)
 		|| ((line[config->i] == 'E') && (line[config->i + 1] == 'A')
 			&& (white_spaces(line[config->i + 2])))
 		|| ((line[config->i] == 'S') && (white_spaces(line[config->i + 1]))))
-		*config = check_path(&line[config->i], *config);
+		*config = check_cardinals(&line[config->i], *config);
 }
 
 t_config	check_file(char *line, t_config config)
@@ -82,7 +82,7 @@ t_config	load_file(char *file, t_config config)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		print_err("Fallo al intentar abrir el archivo.");
+		print_err("Error al abrir el archivo.");
 	while (get_next_line(fd, &line))
 	{
 		check_errors(line, config);
@@ -103,11 +103,11 @@ t_config	file_procesator(char *file, int argc)
 
 	if (file[ft_strlen(file) - 1] != 'b' && file[ft_strlen(file) - 2] != 'u'
 		&& file[ft_strlen(file) - 3] != 'c' && file[ft_strlen(file) - 4] != '.')
-		printf("El archivo que ingresa debe ser tener la extension .cub");
+		printf("El mapa no tiene la extension .cub");
 	reset_t_config(&config);
 	config = load_file(file, config);
 	config.mapa = read_map(file, &config);
 	if (config.player_begin[0] == 0 && config.player_begin[1] == 0)
-		print_err("Este mapa no puede ser usado sin un jugador");
+		print_err("Falta especificar el jugador en el mapa.");
 	return (config);
 }

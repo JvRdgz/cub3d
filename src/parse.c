@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jarodrig <jarodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 19:26:50 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/03 19:29:14 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:37:52 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_map	parserico(char **map, t_config *config)
+t_map	parser(char **map, t_config *config)
 {
 	int		i;
 	int		j;
@@ -37,11 +37,11 @@ t_map	parserico(char **map, t_config *config)
 		}
 		i++;
 	}
-	ceil_floor_parsing(&config->mapa, config);
+	ceil_floor_parser(&config->mapa, config);
 	return (config->mapa);
 }
 
-void	ceil_floor_parsing(t_map *mapa, t_config *config)
+void	ceil_floor_parser(t_map *mapa, t_config *config)
 {
 	config->hexaceil = creatergb(config->ceil[0],
 			config->ceil[1], config->ceil[2]);

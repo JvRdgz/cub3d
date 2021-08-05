@@ -6,7 +6,7 @@
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 21:09:50 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/02 21:09:55 by jarodrig         ###   ########.fr       */
+/*   Updated: 2021/08/05 19:01:14 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_config	check_ceil_floor(char *line, t_config config)
 
 	if ((line[config.i] == 'C' && config.ceil[0] != -1)
 		|| (line[config.i] == 'F' && config.floor[0] != -1))
-		print_err("Duplicados los valores de ceil/floor");
+		print_err("Valores de C o F duplicados.");
 	conmut = line[config.i];
 	check_ceil_floor2(line);
 	while ((line[config.i] != '\0') && ((line[config.i] < '0')
@@ -30,7 +30,7 @@ t_config	check_ceil_floor(char *line, t_config config)
 		splitter[2] = give_me_digit_without_spaces(splitter[2]);
 	if ((splitter[3]) || (char_to_num(splitter[0]) != 1)
 		|| (char_to_num(splitter[1]) != 1) || (char_to_num(splitter[2]) != 1))
-		print_err("Formato de ceil/floor incorrecto.");
+		print_err("Formatos de C o F incorrectos.");
 	check_cf(conmut, splitter, &config);
 	while (line[config.i])
 		config.i++;
@@ -49,7 +49,7 @@ void	check_ceil_floor2(char *line)
 			i++;
 		if ((line[i] == ',' && (line[i - 1] < '0' || line[i - 1] > '9'))
 			|| (line[i] == ',' && (line[i + 1] < '0' || line[i + 1] > '9')))
-			print_err("Ceil/Floor debe tener el formato: 'x,x,x' en positivo");
+			print_err("Formato de F C valido => 'x,x,x' en positivo");
 		i++;
 	}
 }

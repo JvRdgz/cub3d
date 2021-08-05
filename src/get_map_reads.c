@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarodrig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 19:27:42 by jarodrig          #+#    #+#             */
-/*   Updated: 2021/08/04 19:27:45 by jarodrig         ###   ########.fr       */
+/*   Created: 2021/08/05 21:22:45 by jarodrig          #+#    #+#             */
+/*   Updated: 2021/08/05 21:22:47 by jarodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ t_map	read_map(char *file, t_config *config)
 		print_err("Fallo al intentar abrir el archivo .cub");
 	config->maxr = (what_is_higher(config->map_max_lines,
 				config->map_max_rows)) + 2;
-	map = read_map2(fd, config, 0);
+	map = read_map_aux(fd, config, 0);
 	check_map(config, map);
 	valid_map(map);
-	config->mapa = parserico(map, config);
+	config->mapa = parser(map, config);
 	close(fd);
 	double_kill(map);
 	return (config->mapa);
 }
 
-char	**read_map2(int fd, t_config *config, int count_sprites)
+char	**read_map_aux(int fd, t_config *config, int count_sprites)
 {
 	char		*line;
 	char		**map;
@@ -43,14 +43,14 @@ char	**read_map2(int fd, t_config *config, int count_sprites)
 		printf("Malloc ha fallado en: get_map_reads.c");
 	while (((get_next_line(fd, &line)) > 0))
 	{
-		if (who_needs_a_map(line, "102 NSWE\t", 0, 0) == 1)
+		if (check_valid_map(line, "102 NSWE\t", 0, 0) == 1)
 		{
 			map[i] = ft_strdup2(line, ' ', config->maxr, &count_sprites);
 			i++;
 		}
 		kill(line);
 	}
-	if (who_needs_a_map(line, "102 NSWE\t", 0, 0) == 1)
+	if (check_valid_map(line, "102 NSWE\t", 0, 0) == 1)
 		map[i++] = ft_strdup2(line, ' ', config->maxr, &count_sprites);
 	kill(line);
 	while (i < config->maxr)
@@ -71,14 +71,14 @@ void	check_map(t_config *config, char **map)
 		j = 0;
 		while (map[i][j] != '\0')
 		{
-			check_map2(config, map, i, j);
+			check_map_aux(config, map, i, j);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	check_map2(t_config *config, char **map, int i, int j)
+void	check_map_aux(t_config *config, char **map, int i, int j)
 {
 	if (((map[i][j] == 'N') || (map[i][j] == 'S')
 		|| (map[i][j] == 'E') || (map[i][j] == 'W'))
